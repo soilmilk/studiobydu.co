@@ -14,9 +14,10 @@ export default function HomePage() {
             </h1>
             <p className="">
               Hi 👋 I'm Anthony, a current CS major @ Stanford. I'm interested
-              in the workings of tech infrastructure and developer systems. Before
-              the current AI wave, I've built for Android/iOS, which shaped how
-              I think about reliability, APIs, and end-to-end ownership.
+              in the workings of tech infrastructure and developer systems.
+              Before the current AI wave, I've built for Android/iOS, which
+              shaped how I think about reliability, APIs, and end-to-end
+              ownership.
             </p>
             <p className="">
               I work on making complex systems <i>legible</i> and{" "}
@@ -61,7 +62,7 @@ export default function HomePage() {
         </div>
 
         <div className="rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--card))] p-5">
-          <p className="text-sm text-[rgb(var(--muted-soft))]">
+          <p className="text-sm text-[rgb(var(--muted))]">
             previous works . . .
           </p>
 
@@ -116,20 +117,14 @@ export default function HomePage() {
             Building infrastructure for collegiate esports--including league
             operations, data pipelines, and player-facing tools.
           </p>
-          <p className="">I'm currently looking for roles in</p>
+          <p className="">I'm also currently looking for roles in</p>
           <ul className="list-disc list-outside pl-5  space-y-1">
             <li>Product engineering</li>
             <li>Platform / infrastructure</li>
             <li>Early-stage or systems-heavy teams</li>
           </ul>
 
-          <div className="flex items-center gap-3 pt-4 ">
-            <Link
-              className="rounded-xl border border-neutral-200 px-4 py-2 text-sm hover:opacity-60"
-              href="/blog"
-            >
-              Notes
-            </Link>
+          <div className="flex items-center gap-3 pt-5 ">
             <a
               href="mailto:apdu@stanford.edu"
               className="
@@ -147,6 +142,12 @@ export default function HomePage() {
             >
               Contact
             </a>
+            <Link
+              className="rounded-xl border border-[rgb(var(--muted))] px-4 py-2 text-sm hover:opacity-60"
+              href="/blog"
+            >
+              Notes
+            </Link>
           </div>
         </div>
       </div>
