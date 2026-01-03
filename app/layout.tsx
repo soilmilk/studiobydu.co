@@ -6,11 +6,16 @@ import { Analytics } from "@vercel/analytics/next";
 
 export const metadata = {
   title: "Anthony Du",
+  description: "Stanford CS Undergrad",
   icons: {
     icon: "/icon.png",
     apple: "/apple-touch-icon.png",
     other: [
-      { rel: "mask-icon", href: "/safari-pinned-tab.svg", color: "#111111" },
+      {
+        rel: "mask-icon",
+        url: "/safari-pinned-tab.svg",
+        color: "#111111",
+      },
     ],
   },
 };
