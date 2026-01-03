@@ -1,10 +1,11 @@
 import "./globals.css";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import { ThemeProvider } from "next-themes";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata = {
-  title: "Du's Studio",
+  title: "Anthony Du",
   description: "Stanford CS Undergrad",
 };
 
@@ -14,17 +15,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="min-h-screen bg-white text-neutral-950">
-        <div className="flex min-h-screen flex-col">
-          <Nav />
+    <html lang="en" suppressHydrationWarning>
+      <body className="min-h-screen">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <div className="flex min-h-screen flex-col">
+            <Nav />
 
-          {/* Main content grows to fill space */}
-          <main className="flex-1">{children}</main>
+            {/* Main content grows to fill space */}
+            <main className="flex-1">{children}</main>
 
-          {/* Footer sticks to bottom */}
-          <Footer />
-        </div>
+            {/* Footer sticks to bottom */}
+            <Footer />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

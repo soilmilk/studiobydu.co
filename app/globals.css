@@ -4,6 +4,13 @@
 
 :root {
   color-scheme: light;
+  --muted: 82 82 82; /* default subtle text */
+  --muted-soft: 120 120 120; /* lighter gray */
+}
+
+.dark {
+  --muted: 160 160 160;
+  --muted-soft: 190 190 190; /* very light gray for dark bg */
 }
 
 @keyframes floaty {
@@ -17,6 +24,23 @@
 }
 .floaty {
   animation: floaty 3s ease-in-out infinite;
+}
+
+@keyframes shadow-breathe {
+  0%,
+  100% {
+    transform: translateX(-50%) scaleX(1.15) scaleY(0.85);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateX(-50%) scaleX(0.9) scaleY(0.65);
+    opacity: 0.8;
+  }
+}
+
+.shadow-breathe {
+  animation: shadow-breathe 3s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 
 .prose h1,
@@ -35,4 +59,16 @@
 
 .prose p {
   margin: 1rem 0;
+}
+
+@keyframes lamp-pulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 1;
+  }
 }
