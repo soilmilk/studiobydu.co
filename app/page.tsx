@@ -13,10 +13,10 @@ export default function HomePage() {
               <u>About</u>
             </h1>
             <p className="">
-              Hi 👋 I'm Anthony. A current CS major @ Stanford, I'm interested
+              Hi 👋 I'm Anthony, a current CS major @ Stanford. I'm interested
               in the works of tech infrastructure and developer systems. Before
-              the current AI wave, I've built for Android/iOS, shaping how I
-              think about reliability, APIs, and end-to-end ownership.
+              the current AI wave, I've built for Android/iOS, which shaped how
+              I think about reliability, APIs, and end-to-end ownership.
             </p>
             <p className="">
               I work on making complex systems <i>legible</i> and{" "}
