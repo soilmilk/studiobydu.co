@@ -6,6 +6,19 @@
   color-scheme: light;
 }
 
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.floaty {
+  animation: floaty 3s ease-in-out infinite;
+}
+
 .prose h1,
 .prose h2,
 .prose h3 {

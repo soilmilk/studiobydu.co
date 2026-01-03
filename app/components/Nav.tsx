@@ -9,10 +9,10 @@ export default function Nav() {
         </Link>
         <nav className="flex items-center gap-4 text-sm text-neutral-700">
           <Link href="/blog" className="hover:text-neutral-950">
-            Notes
+            Studio Notes
           </Link>
           <a
-            href="https://www.linkedin.com/"
+            href="https://www.linkedin.com/in/anthonypdu/"
             className="hover:text-neutral-950"
             target="_blank"
             rel="noreferrer"

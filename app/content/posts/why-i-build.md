@@ -1,14 +1,16 @@
 ---
-title: "Why I build in public"
+title: "Q1 @ the farm"
 date: "2026-01-01"
-description: "The compounding loop: proof, trust, leverage."
+description: "Die Luft der Freiheit weht."
 ---
 
-I’m building a long-term advantage: **proof of work + trust + distribution**.
-=
--Proof: shipping regularly
+some highlights
 
-- Trust: transparent decisions and postmortems
-- Distribution: people know what I do and who I do it for
-
-If you’re trying to build something real, hiding is expensive.
+- • drank matcha for the first time (overrated green tea)
+- • invited to eat w 2 Korean millionaires
+- • met up w childhood friends on campus
+- • endless Caltrain rides
+- • Wilbur >>>>
+- • skipped class to pitch at AutoDesk's HQ
+- • got back to footy + gym
+- • finals: failed one, aced another
