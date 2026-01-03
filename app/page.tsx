@@ -13,10 +13,10 @@ export default function HomePage() {
               <u>About</u>
             </h1>
             <p className="text-neutral-700">
-              I'm a CS major @ Stanford, interested in tech infrastructure and
-              developer systems. Before the current AI wave, I've built for
-              Android/iOS, shaping how I think about reliability, APIs, and
-              end-to-end ownership.
+              Hi 👋 I'm Anthony. A current CS major @ Stanford, I'm interested
+              in the works of tech infrastructure and developer systems. Before
+              the current AI wave, I've built for Android/iOS, shaping how I
+              think about reliability, APIs, and end-to-end ownership.
             </p>
             <p className="text-neutral-700">
               I work on making complex systems <i>legible</i> and{" "}
@@ -99,7 +99,7 @@ export default function HomePage() {
               className="rounded-xl border border-neutral-200 px-4 py-2 text-sm hover:bg-neutral-50"
               href="/blog"
             >
-              Read the blog
+              Notes
             </Link>
             <a
               className="rounded-xl bg-neutral-950 px-4 py-2 text-sm text-white hover:opacity-90"

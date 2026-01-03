@@ -33,7 +33,12 @@ export default async function BlogPostPage({
         </header>
 
         <div
-          className="prose max-w-none prose-p:my-4"
+          className="
+    prose max-w-none prose-p:my-4
+    prose-pre:rounded-lg prose-pre:bg-neutral-900 prose-pre:p-4 prose-pre:overflow-x-auto
+    prose-code:text-rose-600 prose-code:bg-neutral-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded
+    prose-pre:prose-code:bg-transparent prose-pre:prose-code:p-0 prose-pre:prose-code:text-inherit
+  "
           dangerouslySetInnerHTML={{ __html: html }}
         />
       </article>

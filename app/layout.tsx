@@ -4,8 +4,8 @@ import Footer from "./components/Footer";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata = {
-  title: "Anthony Du",
-  description: "Builder + storyteller for competitive communities",
+  title: "Du's Studio",
+  description: "Stanford CS Undergrad",
 };
 
 export default function RootLayout({

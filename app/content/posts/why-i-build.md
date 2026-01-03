@@ -1,7 +1,10 @@
 ---
 title: "c++ debugger"
 date: "2026-01-01"
-description: "Die Luft der Freiheit weht."
+description: "Segfault."
 ---
 
-text here?? 
+```cpp
+int* p = nullptr;
+*p = 42;
+```
