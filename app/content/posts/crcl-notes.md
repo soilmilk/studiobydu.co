@@ -4,8 +4,6 @@ date: "2025-12-20"
 description: "Structure, integrity, and a reason to care."
 ---
 
-I lean back, amazed by the metrics on my screen.
-
 **3M views. 700+ Discord members. 200+ interested colleges. 3 Supercell community heads.**
 
 And to think of it . . . all this came from a joke ("What if we started a collegiate Clash Royale league?").

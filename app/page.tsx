@@ -14,7 +14,7 @@ export default function HomePage() {
             </h1>
             <p className="">
               Hi 👋 I'm Anthony, a current CS major @ Stanford. I'm interested
-              in the works of tech infrastructure and developer systems. Before
+              in the workings of tech infrastructure and developer systems. Before
               the current AI wave, I've built for Android/iOS, which shaped how
               I think about reliability, APIs, and end-to-end ownership.
             </p>

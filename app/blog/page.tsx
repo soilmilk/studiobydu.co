@@ -19,7 +19,7 @@ export default function BlogIndex() {
           {posts.map((p) => (
             <li
               key={p.slug}
-              className="rounded-2xl border border-neutral-200 p-5 hover:opacity-60"
+              className="rounded-2xl border-2 border-[rgb(var(--muted-soft))] p-5 hover:opacity-60"
             >
               <Link href={`/blog/${p.slug}`} className="block">
                 <div className="flex items-baseline justify-between gap-4">
