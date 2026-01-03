@@ -30,11 +30,11 @@
   0%,
   100% {
     transform: translateX(-50%) scaleX(1.15) scaleY(0.85);
-    opacity: 0.5;
+    opacity: 0.8;
   }
   50% {
     transform: translateX(-50%) scaleX(0.9) scaleY(0.65);
-    opacity: 0.8;
+    opacity: 0.5;
   }
 }
 
