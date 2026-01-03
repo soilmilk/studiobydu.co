@@ -53,12 +53,35 @@
   @apply underline underline-offset-4;
 }
 
-.prose code {
-  @apply rounded bg-neutral-100 px-1 py-0.5;
-}
-
 .prose p {
   margin: 1rem 0;
+}
+
+/* Inline code */
+.prose code {
+  color: rgb(20 20 20);
+  padding: 0.15em 0.35em;
+  font-weight: 500;
+}
+
+.dark .prose code {
+  color: rgb(255, 255, 255);
+  padding: 0.15em 0.35em;
+  font-weight: 500;
+}
+
+/* Code blocks */
+.prose pre {
+  background-color: rgb(245 245 245);
+  color: rgb(20 20 20);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  overflow-x: auto;
+}
+
+.dark .prose pre {
+  background-color: rgba(190, 190, 190, 0.252);
+  color: rgb(240 240 240);
 }
 
 @keyframes lamp-pulse {
