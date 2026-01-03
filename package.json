@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.6.1",
     "brew": "^0.0.8",
     "framer-motion": "^12.23.26",
     "git-filter-repo": "^0.0.30",
