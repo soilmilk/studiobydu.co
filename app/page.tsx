@@ -61,6 +61,7 @@ export default function HomePage() {
           </div>
         </div>
 
+        {/*Previous Works*/}
         <div className="rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--card))] p-5">
           <p className="text-sm text-[rgb(var(--muted))]">
             previous works . . .
@@ -109,6 +110,37 @@ export default function HomePage() {
               </a>
             </li>
           </ul>
+        </div>
+
+        {/*Skills */}
+        <div className="rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--card))] p-5">
+          <p className="text-sm text-[rgb(var(--muted-soft))]">
+            technical skills
+          </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {[
+              "C++",
+              "TypeScript",
+              "React",
+              "Next.js",
+              "PostgreSQL",
+
+              "Swift",
+              "SwiftUI",
+              "Java/Kotlin",
+              "Python",
+              "GraphQL",
+              "Supabase",
+              "Git",
+            ].map((s) => (
+              <span
+                key={s}
+                className="rounded-full border border-[rgb(var(--border))] px-3 py-1 text-sm text-[rgb(var(--muted-soft))]"
+              >
+                {s}
+              </span>
+            ))}
+          </div>
         </div>
 
         <div className="flex flex-col gap-3">
