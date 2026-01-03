@@ -27,7 +27,7 @@ export default function HomePage() {
           </div>
           <div className="floaty inline-block">
             <Image
-              src="/media/beach.png"
+              src="/media/harbor.png"
               alt="Profile"
               width={500}
               height={500}
