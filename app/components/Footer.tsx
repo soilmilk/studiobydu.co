@@ -1,0 +1,11 @@
+export default function Footer() {
+  return (
+    <footer className="border-t border-neutral-200">
+      <div className="mx-auto w-full max-w-3xl px-4 py-6 text-sm text-neutral-600">
+        <div className="flex-col gap-1">
+          <p>© {new Date().getFullYear()} Anthony Du</p>
+        </div>
+      </div>
+    </footer>
+  );
+}

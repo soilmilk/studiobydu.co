@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+.prose h1,
+.prose h2,
+.prose h3 {
+  @apply font-semibold tracking-tight;
+}
+
+.prose a {
+  @apply underline underline-offset-4;
+}
+
+.prose code {
+  @apply rounded bg-neutral-100 px-1 py-0.5;
+}
+
+.prose p {
+  margin: 1rem 0;
+}
