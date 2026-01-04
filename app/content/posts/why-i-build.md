@@ -1,15 +1,10 @@
 ---
-title: "testing code"
+title: "early notes from crcl's backend structure"
 date: "2026-01-01"
-description: "logs for the new year 🎉"
+description: "how our data is stored"
 ---
 
-segfault in c++ (cs 106b flashbacks)
-
-```cpp
-int* p = nullptr;
-*p = 42;
-```
+i've included a snippet i found interesting.
 
 An example response from clash's API:
 
@@ -31,7 +26,9 @@ return NextResponse.json({
 });
 ```
 
-pulling uni data from supabase:
+how would you associate the player with their uni roster, or other metadata?
+
+fix: pulling uni data from supabase using player id:
 
 ```
 query GetPlayerById($id: UUID!) {
@@ -53,3 +50,5 @@ query GetPlayerById($id: UUID!) {
   }
 }
 ```
+
+working with this response gives you access to the player's full match history.
