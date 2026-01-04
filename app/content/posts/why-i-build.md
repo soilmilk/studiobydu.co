@@ -1,12 +1,14 @@
 ---
-title: "early notes from crcl's backend structure"
+title: "early issue from crcl's backend structure"
 date: "2026-01-01"
 description: "how our data is stored"
 ---
 
-i've included a snippet i found interesting.
+when building the backend, one of the first real design questions we ran into was:
 
-An example response from clash's API:
+**How would you associate the player with their uni roster -- and also get their match history?**
+
+At a glance, clash's API makes this feel easy. Here's an example response that we're working with:
 
 ```typescript
 return NextResponse.json({
@@ -26,21 +28,43 @@ return NextResponse.json({
 });
 ```
 
-how would you associate the player with their uni roster, or other metadata?
+Originally, we wanted to store these _child_ variables in the _parent player_ object. however, this could get messy etc.
 
-fix: pulling uni data from supabase using player id:
+- • player could switch roster, so its `roster_id` changes. however, to assemble a roster, this means checking every player if they contain `roster_id` -- much cleaner to have the opposite, an already assembled `roster` object with `player_id`s.
+
+- • each match has sets of games (e.g. M1 S2 a), so harder to keep track of this as a _child_ variable.
+
+---
+
+## Structural Decision: Instead of inflating the `player` object, flip the model.
+
+---
+
+Treat player as a _child_, use its unique `player_id` as a key to `set_player, player, roster` collections to access data in all 3.
 
 ```
-query GetPlayerById($id: UUID!) {
-  playerCollection(filter: { id: { eq: $id } }, first: 1) {
+query GetPlayerSetsMatchesGames($playerId: UUID!) {
+  set_playerCollection(filter: { player_id: { eq: $playerId } }) {
     edges {
       node {
-        ...Player
-        rosterCollection(filter: { active: { eq: true } }) {
-          edges {
-            node {
-              school {
-                ...School
+        id
+        set {
+          /* Set Data */
+          match {
+            /* Match Data */
+          }
+          gameCollection(orderBy: [{ game_num: AscNullsLast }]) {
+            edges {
+              node {
+                id
+                game_num
+                start
+                end
+                winner_crowns
+                loser_crowns
+                winner_school_id: school {
+                  ...School
+                }
               }
             }
           }
@@ -48,7 +72,37 @@ query GetPlayerById($id: UUID!) {
       }
     }
   }
+  playerCollection(filter: { id: { eq: $playerId } }, first: 1) {
+    edges {
+      node {
+        ...Player
+      }
+    }
+  }
+
+  rosterCollection(
+    filter: { player_id: { eq: $playerId }, active: { eq: true } }
+    first: 1
+  ) {
+    edges {
+      node {
+        school {
+          ...School
+        }
+      }
+    }
+  }
 }
 ```
 
-working with this response gives you access to the player's full match history.
+this response gives a nice dataset of the player's
+
+✅ school
+✅ roster
+✅ matches/sets/games (e.g. M1 S2 G1)
+
+---
+
+## Takeaway: In a league system, identity should be stable, and relationships should move. We avoided assumptions about roster stability or match structure into the player model itself.
+
+---
