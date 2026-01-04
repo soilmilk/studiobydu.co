@@ -1,10 +1,10 @@
 ---
 title: "testing code"
 date: "2026-01-01"
-description: "logs"
+description: "logs for the new year 🎉"
 ---
 
-segfault in c++
+segfault in c++ (cs 106b flashbacks)
 
 ```cpp
 int* p = nullptr;
@@ -29,4 +29,27 @@ return NextResponse.json({
       }
     : null,
 });
+```
+
+pulling uni data from supabase:
+
+```
+query GetPlayerById($id: UUID!) {
+  playerCollection(filter: { id: { eq: $id } }, first: 1) {
+    edges {
+      node {
+        ...Player
+        rosterCollection(filter: { active: { eq: true } }) {
+          edges {
+            node {
+              school {
+                ...School
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
 ```
