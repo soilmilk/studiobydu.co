@@ -87,7 +87,7 @@ export default function HomePage() {
                 redesigning food donation flows
               </span>{" "}
               <a
-                href="https://micahsbackpack.org/new-mobile-app/"
+                href="https://micahsbackpack.org/mobile-app/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline hover:text-white"
