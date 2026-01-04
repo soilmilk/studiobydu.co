@@ -7,7 +7,7 @@ export default function HomePage() {
   return (
     <Container>
       <div className="flex flex-col gap-6">
-        <div className="flex flex-row gap-5">
+        <div className="flex flex-row gap-5 pb-10">
           <div className="flex flex-col gap-3">
             <h1 className="text-3xl font-semibold tracking-tight">
               <u>About</u>
@@ -64,7 +64,7 @@ export default function HomePage() {
         {/*Previous Works*/}
         <div className="rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--card))] p-5">
           <p className="text-sm text-[rgb(var(--muted))]">
-            previous works . . .
+            selected works . . .
           </p>
 
           <ul className="mt-3 list-disc pl-5 text-[rgb(var(--muted-soft))]">
@@ -120,15 +120,15 @@ export default function HomePage() {
           <div className="mt-3 flex flex-wrap gap-2">
             {[
               "C++",
+              "PostgreSQL",
+              "Python",
               "TypeScript",
               "React",
               "Next.js",
-              "PostgreSQL",
-              "Python",
+              "GraphQL",
               "Swift",
               "SwiftUI",
               "Java/Kotlin",
-              "GraphQL",
               "Supabase",
               "Git",
             ].map((s) => (
@@ -142,16 +142,17 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 pt-10">
           <h2 className="text-xl font-semibold tracking-tight">Now</h2>
           <p className="">
-            Building infrastructure for collegiate esports--including league
-            operations, data pipelines, and player-facing tools.
+            Currently building infrastructure for collegiate esports — focusing
+            on league operations, identity and roster systems, and data
+            pipelines that make competition reliable across schools.
           </p>
-          <p className="">I'm also currently looking for roles in</p>
+          <p className="">I'm most interested in teams working on:</p>
           <ul className="list-disc list-outside pl-5  space-y-1">
-            <li>Product engineering</li>
             <li>Platform / infrastructure</li>
+            <li>Product engineering</li>
             <li>Early-stage or systems-heavy teams</li>
           </ul>
 
@@ -177,7 +178,7 @@ export default function HomePage() {
               className="rounded-xl border border-[rgb(var(--muted))] px-4 py-2 text-sm hover:opacity-60"
               href="/blog"
             >
-              Notes
+              Notes (build logs & design decisions)
             </Link>
           </div>
         </div>
