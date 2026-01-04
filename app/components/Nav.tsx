@@ -109,7 +109,7 @@ export default function Nav() {
           </a>
 
           <a
-            href="https://github.com/"
+            href="https://github.com/soilmilk"
             className="hover:text-neutral-950 dark:hover:text-neutral-50"
             target="_blank"
             rel="noreferrer"
