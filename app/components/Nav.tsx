@@ -122,6 +122,21 @@ export default function Nav() {
               className="opacity-60 hover:opacity-100 transition-opacity  dark:invert"
             />
           </a>
+
+          <a
+            href="https://www.instagram.com/anth0nydu/"
+            className="hover:text-neutral-950 dark:hover:text-neutral-50"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Image
+              src="/media/instagram.png"
+              alt="Instagram"
+              width={20}
+              height={20}
+              className="opacity-60 hover:opacity-100 transition-opacity  dark:invert"
+            />
+          </a>
         </nav>
       </div>
     </header>
