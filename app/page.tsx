@@ -124,11 +124,10 @@ export default function HomePage() {
               "React",
               "Next.js",
               "PostgreSQL",
-
+              "Python",
               "Swift",
               "SwiftUI",
               "Java/Kotlin",
-              "Python",
               "GraphQL",
               "Supabase",
               "Git",
