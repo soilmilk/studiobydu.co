@@ -7,7 +7,7 @@ export default function HomePage() {
   return (
     <Container>
       <div className="flex flex-col gap-6">
-        <div className="flex flex-row gap-5 pb-10">
+        <div className="flex flex-row gap-5 pb-5">
           <div className="flex flex-col gap-3">
             <h1 className="text-3xl font-semibold tracking-tight">
               <u>About</u>
@@ -142,7 +142,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 pt-10">
+        <div className="flex flex-col gap-3 pt-5">
           <h2 className="text-xl font-semibold tracking-tight">Now</h2>
           <p className="">
             Currently building infrastructure for collegiate esports — focusing
