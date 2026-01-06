@@ -32,7 +32,7 @@ Originally, we wanted to store these _child_ variables in the _parent player_ ob
 
 - • player could switch roster, so its `roster_id` changes. however, to assemble a roster, this means checking every player if they contain `roster_id` -- much cleaner to have the opposite, an already assembled `roster` object with `player_id`s.
 
-- • each match has sets of games (e.g. M1 S2 a), so harder to keep track of this as a _child_ variable.
+- • each match has sets of games (e.g. M1 S2), so harder to keep track of this as a _child_ variable.
 
 ---
 
