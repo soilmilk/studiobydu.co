@@ -7,7 +7,7 @@ export default function HomePage() {
   return (
     <Container>
       <div className="flex flex-col gap-6">
-        <div className="flex flex-row gap-5 pb-5">
+        <div className="flex flex-col md:flex-row gap-10 pb-5">
           <div className="flex flex-col gap-3">
             <h1 className="text-3xl font-semibold tracking-tight">
               <u>About</u>
@@ -27,7 +27,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="relative inline-block">
+          <div className="relative flex jusify-center overflow-visible ">
             {/* Shadow ellipse */}
             <div
               aria-hidden
@@ -49,13 +49,13 @@ export default function HomePage() {
     "
             />
 
-            <div className="floaty inline-block">
+            <div className="relative z-10 floaty inline-block w-30 sm:w-40 md:w-48 lg:w-50">
               <Image
                 src="/media/harbor.png"
                 alt="Profile"
                 width={500}
                 height={500}
-                className="rounded-full shadow-md"
+                className="w-full h-auto rounded-full shadow-md"
               />
             </div>
           </div>
