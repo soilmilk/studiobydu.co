@@ -28,7 +28,7 @@ export default async function BlogPostPage({
           </h1>
           <p className="mt-2 text-sm text-neutral-500">{meta.date}</p>
           {meta.description ? (
-            <p className="mt-3 text-[rgb(var(--muted-soft))]">
+            <p className="mt-3 text-[rgb(var(--site-muted-soft))]">
               {meta.description}
             </p>
           ) : null}

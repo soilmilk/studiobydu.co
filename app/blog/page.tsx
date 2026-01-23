@@ -10,7 +10,7 @@ export default function BlogIndex() {
       <div className="flex flex-col gap-6">
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">Notes</h1>
-          <p className="mt-1 text-[rgb(var(--muted-soft))]">
+          <p className="mt-1 text-[rgb(var(--site-muted-soft))]">
             Build logs, ideas, lessons, and receipts.
           </p>
         </div>
@@ -19,7 +19,7 @@ export default function BlogIndex() {
           {posts.map((p) => (
             <li
               key={p.slug}
-              className="rounded-2xl border-2 border-[rgb(var(--muted-soft))] p-5 hover:opacity-60"
+              className="rounded-2xl border-2 border-[rgb(var(--site-muted-soft))] p-5 hover:opacity-60"
             >
               <Link href={`/blog/${p.slug}`} className="block">
                 <div className="flex items-baseline justify-between gap-4">
@@ -29,7 +29,7 @@ export default function BlogIndex() {
                   <span className="text-xs text-neutral-500">{p.date}</span>
                 </div>
                 {p.description ? (
-                  <p className="mt-2 text-sm text-[rgb(var(--muted-soft))]">
+                  <p className="mt-2 text-sm text-[rgb(var(--site-muted-soft))]">
                     {p.description}
                   </p>
                 ) : null}

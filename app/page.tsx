@@ -62,12 +62,12 @@ export default function HomePage() {
         </div>
 
         {/*Previous Works*/}
-        <div className="rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--card))] p-5">
-          <p className="text-sm text-[rgb(var(--muted))]">
+        <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-5">
+          <p className="text-sm text-[rgb(var(--site-muted))]">
             selected works . . .
           </p>
 
-          <ul className="mt-3 list-disc pl-5 text-[rgb(var(--muted-soft))]">
+          <ul className="mt-3 list-disc pl-5 text-[rgb(var(--site-muted-soft))]">
             <li>
               <span className="font-light">
                 detailing proofs on Bezout&apos;s Lemma{" "}
@@ -113,8 +113,8 @@ export default function HomePage() {
         </div>
 
         {/*Skills */}
-        <div className="rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--card))] p-5">
-          <p className="text-sm text-[rgb(var(--muted-soft))]">
+        <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-5">
+          <p className="text-sm text-[rgb(var(--site-muted-soft))]">
             technical skills
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
@@ -134,7 +134,7 @@ export default function HomePage() {
             ].map((s) => (
               <span
                 key={s}
-                className="rounded-full border border-[rgb(var(--border))] px-3 py-1 text-sm text-[rgb(var(--muted-soft))]"
+                className="rounded-full border border-[hsl(var(--border))] px-3 py-1 text-sm text-[rgb(var(--site-muted-soft))]"
               >
                 {s}
               </span>
@@ -175,7 +175,7 @@ export default function HomePage() {
               Contact
             </a>
             <Link
-              className="rounded-xl border border-[rgb(var(--muted))] px-4 py-2 text-sm hover:opacity-60"
+              className="rounded-xl border border-[rgb(var(--site-muted))] px-4 py-2 text-sm hover:opacity-60"
               href="/blog"
             >
               Notes (build logs & design decisions)

@@ -89,7 +89,7 @@ export default function Nav() {
               alt="Notes"
               width={20}
               height={20}
-              className="opacity-60 hover:opacity-100 transition-opacity dark:invert"
+              className="opacity-60 hover:opacity-100 transition-opacity dark:opacity-100 dark:[filter:invert(1)]"
             />
           </Link>
 
@@ -104,7 +104,7 @@ export default function Nav() {
               alt="Linkedin"
               width={20}
               height={20}
-              className="opacity-60 hover:opacity-100 transition-opacity  dark:invert"
+              className="opacity-60 hover:opacity-100 transition-opacity dark:opacity-100 dark:[filter:invert(1)]"
             />
           </a>
 
@@ -119,7 +119,7 @@ export default function Nav() {
               alt="Github"
               width={20}
               height={20}
-              className="opacity-60 hover:opacity-100 transition-opacity  dark:invert"
+              className="opacity-60 hover:opacity-100 transition-opacity dark:opacity-100 dark:[filter:invert(1)]"
             />
           </a>
 
@@ -134,7 +134,7 @@ export default function Nav() {
               alt="Instagram"
               width={20}
               height={20}
-              className="opacity-60 hover:opacity-100 transition-opacity  dark:invert"
+              className="opacity-60 hover:opacity-100 transition-opacity dark:opacity-100 dark:[filter:invert(1)]"
             />
           </a>
         </nav>
