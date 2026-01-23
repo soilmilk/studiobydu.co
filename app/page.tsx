@@ -14,10 +14,9 @@ export default function HomePage() {
             </h1>
             <p className="">
               Hi 👋 I'm Anthony, a current CS major @ Stanford. I'm interested
-              in the workings of tech infrastructure and developer systems.
-              Before the current AI wave, I've built for Android/iOS, which
-              shaped how I think about reliability, APIs, and end-to-end
-              ownership.
+              in the workings of tech infra and system design. Before the
+              current AI wave, I've built for Android/iOS, which shaped how I
+              think about reliability, APIs, and end-to-end ownership.
             </p>
             <p className="">
               I work on making complex systems <i>legible</i> and{" "}
@@ -106,7 +105,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="underline hover:text-white"
               >
-                (SIGNIFICANCE journal)
+                (Signifance journal)
               </a>
             </li>
           </ul>
