@@ -105,7 +105,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="underline hover:text-white"
               >
-                (Signifance journal)
+                (Significance journal)
               </a>
             </li>
           </ul>
@@ -130,6 +130,8 @@ export default function HomePage() {
               "Java/Kotlin",
               "Supabase",
               "Git",
+              "R",
+              "MATLAB",
             ].map((s) => (
               <span
                 key={s}
@@ -177,7 +179,7 @@ export default function HomePage() {
               className="rounded-xl border border-[rgb(var(--site-muted))] px-4 py-2 text-sm hover:opacity-60"
               href="/blog"
             >
-              Notes (build logs & design decisions)
+              Notes
             </Link>
           </div>
         </div>
