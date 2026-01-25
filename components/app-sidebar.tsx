@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import {
+  AppleIcon,
   ArrowUpCircleIcon,
   BarChartIcon,
   CameraIcon,
@@ -10,10 +11,8 @@ import {
   FileCodeIcon,
   FileIcon,
   FileTextIcon,
-  FolderIcon,
   HelpCircleIcon,
   LayoutDashboardIcon,
-  ListIcon,
   SearchIcon,
   SettingsIcon,
   UsersIcon,
@@ -46,19 +45,14 @@ const data = {
       icon: LayoutDashboardIcon,
     },
     {
-      title: "Lifecycle",
-      url: "#",
-      icon: ListIcon,
-    },
-    {
       title: "Analytics",
       url: "#",
       icon: BarChartIcon,
     },
     {
-      title: "Projects",
+      title: "Inventory",
       url: "#",
-      icon: FolderIcon,
+      icon: AppleIcon,
     },
     {
       title: "Team",
@@ -133,17 +127,17 @@ const data = {
   ],
   documents: [
     {
-      name: "Data Library",
+      name: "Food Order Data",
       url: "#",
       icon: DatabaseIcon,
     },
     {
-      name: "Reports",
+      name: "My Notes",
       url: "#",
       icon: ClipboardListIcon,
     },
     {
-      name: "Word Assistant",
+      name: "Assistant",
       url: "#",
       icon: FileIcon,
     },
@@ -162,7 +156,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             >
               <a href="#">
                 <ArrowUpCircleIcon className="h-5 w-5" />
-                <span className="text-base font-bold">Ridiculous Chicken</span>
+                <span className="text-base font-bold">Restaurant Name</span>
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>

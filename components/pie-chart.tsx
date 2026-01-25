@@ -32,23 +32,23 @@ const chartConfig = {
     label: "Visitors",
   },
   chrome: {
-    label: "Chrome",
+    label: "Nachos",
     color: "#2563EB", // blue
   },
   safari: {
-    label: "Safari",
+    label: "Shrimp Tacos (3pc)",
     color: "#10B981", // green
   },
   firefox: {
-    label: "Firefox",
+    label: "Turkey Sandwich",
     color: "#F97316", // orange
   },
   edge: {
-    label: "Edge",
+    label: "Flatbread Pizza",
     color: "#6366F1", // indigo
   },
   other: {
-    label: "Other",
+    label: "Soda",
     color: "#9CA3AF", // gray
   },
 } satisfies ChartConfig;

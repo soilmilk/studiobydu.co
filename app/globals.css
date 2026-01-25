@@ -6,11 +6,20 @@
   color-scheme: light;
   --site-muted: 82 82 82; /* default subtle text */
   --site-muted-soft: 120 120 120; /* lighter gray */
+  --color-desktop: #4f46e5;
+  --color-mobile: #10b981;
+}
+
+:root {
+  --color-desktop: red;
+  --color-mobile: blue;
 }
 
 .dark {
   --site-muted: 160 160 160;
   --site-muted-soft: 190 190 190; /* very light gray for dark bg */
+  --color-desktop: #818cf8;
+  --color-mobile: #34d399;
 }
 
 @keyframes floaty {

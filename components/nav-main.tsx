@@ -1,6 +1,6 @@
 "use client";
 
-import { MailIcon, PlusCircleIcon, type LucideIcon } from "lucide-react";
+import { HomeIcon, PlusCircleIcon, type LucideIcon } from "lucide-react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -39,8 +39,8 @@ export function NavMain({
               variant="outline"
               className="h-9 w-9 shrink-0 group-data-[collapsible=icon]:opacity-0"
             >
-              <Link href="/blog">
-                <MailIcon />
+              <Link href="/">
+                <HomeIcon />
                 <span className="sr-only">Inbox</span>
               </Link>
             </Button>
