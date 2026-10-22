@@ -1,0 +1,2660 @@
+[
+ {
+  "id": "a-parent",
+  "type": "text",
+  "x": 1313.3,
+  "y": 75.2,
+  "w": 67.9,
+  "h": 40.4,
+  "rotate": 0.0,
+  "size": 21.76,
+  "runs": [
+   [
+    "parent",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "a-child",
+  "type": "text",
+  "x": 1326.2,
+  "y": 143.6,
+  "w": 54.5,
+  "h": 35.7,
+  "rotate": 0.0,
+  "size": 25.23,
+  "runs": [
+   [
+    "child",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "a-ref1",
+  "type": "text",
+  "x": 1486.2,
+  "y": 67.0,
+  "w": 26.5,
+  "h": 13.6,
+  "rotate": 0.0,
+  "size": 10.19,
+  "runs": [
+   [
+    "ref=2",
+    "red"
+   ]
+  ]
+ },
+ {
+  "id": "a-ref2",
+  "type": "text",
+  "x": 1532.9,
+  "y": 65.3,
+  "w": 33.3,
+  "h": 12.8,
+  "rotate": 0.0,
+  "size": 10.5,
+  "runs": [
+   [
+    "ref=2",
+    "red"
+   ]
+  ]
+ },
+ {
+  "id": "a-ref3",
+  "type": "text",
+  "x": 1573.1,
+  "y": 64.1,
+  "w": 30.1,
+  "h": 12.5,
+  "rotate": 0.0,
+  "size": 10.25,
+  "runs": [
+   [
+    "ref=2",
+    "red"
+   ]
+  ]
+ },
+ {
+  "id": "a-ref4",
+  "type": "text",
+  "x": 1614.3,
+  "y": 54.2,
+  "w": 22.0,
+  "h": 18.0,
+  "rotate": 0.0,
+  "size": 8.46,
+  "runs": [
+   [
+    "ref=2",
+    "red"
+   ]
+  ]
+ },
+ {
+  "id": "a-ref5",
+  "type": "text",
+  "x": 1649.0,
+  "y": 52.5,
+  "w": 26.7,
+  "h": 13.4,
+  "rotate": 0.0,
+  "size": 10.27,
+  "runs": [
+   [
+    "ref=2",
+    "red"
+   ]
+  ]
+ },
+ {
+  "id": "b-pipelines",
+  "type": "text",
+  "x": 790.2,
+  "y": 296.2,
+  "w": 84.1,
+  "h": 43.1,
+  "rotate": 0.0,
+  "size": 19.26,
+  "runs": [
+   [
+    "Pipelines",
+    "bold ink"
+   ]
+  ]
+ },
+ {
+  "id": "b-returns",
+  "type": "text",
+  "x": 1011.9,
+  "y": 298.0,
+  "w": 260.8,
+  "h": 23.2,
+  "rotate": 0.0,
+  "size": 19.02,
+  "runs": [
+   [
+    "returns two file descriptors",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "b-fds",
+  "type": "text",
+  "x": 1295.7,
+  "y": 292.4,
+  "w": 67.2,
+  "h": 24.1,
+  "rotate": 0.0,
+  "size": 10.18,
+  "runs": [
+   [
+    "fds[0], fds",
+    "red mono"
+   ]
+  ]
+ },
+ {
+  "id": "c-write",
+  "type": "text",
+  "x": 1195.9,
+  "y": 435.9,
+  "w": 144.8,
+  "h": 40.5,
+  "rotate": 0.0,
+  "size": 15.08,
+  "runs": [
+   [
+    "write(1, buf, 6)",
+    "mono ink"
+   ]
+  ]
+ },
+ {
+  "id": "c-bytes",
+  "type": "text",
+  "x": 1356.7,
+  "y": 384.7,
+  "w": 321.2,
+  "h": 21.6,
+  "rotate": -13.05,
+  "size": 17.71,
+  "runs": [
+   [
+    "→ bytes from texture.png appear",
+    "green"
+   ]
+  ]
+ },
+ {
+  "id": "c-read",
+  "type": "text",
+  "x": 1386.9,
+  "y": 464.1,
+  "w": 157.2,
+  "h": 35.6,
+  "rotate": 0.0,
+  "size": 14.56,
+  "runs": [
+   [
+    "read(3, buf, 4096)",
+    "mono ink"
+   ]
+  ]
+ },
+ {
+  "id": "c-cin",
+  "type": "text",
+  "x": 1147.6,
+  "y": 539.6,
+  "w": 37.4,
+  "h": 12.9,
+  "rotate": 0.0,
+  "size": 10.39,
+  "runs": [
+   [
+    "cin >>",
+    "mono pink"
+   ]
+  ]
+ },
+ {
+  "id": "c-cout",
+  "type": "text",
+  "x": 1214.2,
+  "y": 534.4,
+  "w": 50.3,
+  "h": 13.8,
+  "rotate": 0.0,
+  "size": 11.32,
+  "runs": [
+   [
+    "cout <<",
+    "mono pink"
+   ]
+  ]
+ },
+ {
+  "id": "c-cerr",
+  "type": "text",
+  "x": 1293.5,
+  "y": 526.0,
+  "w": 41.2,
+  "h": 13.0,
+  "rotate": 0.0,
+  "size": 9.81,
+  "runs": [
+   [
+    "cerr <<",
+    "mono pink"
+   ]
+  ]
+ },
+ {
+  "id": "c-stdin",
+  "type": "text",
+  "x": 1145.2,
+  "y": 582.6,
+  "w": 35.1,
+  "h": 21.4,
+  "rotate": 0.0,
+  "size": 11.7,
+  "runs": [
+   [
+    "stdin",
+    "mono ink"
+   ]
+  ]
+ },
+ {
+  "id": "c-stdout",
+  "type": "text",
+  "x": 1204.2,
+  "y": 581.5,
+  "w": 51.7,
+  "h": 20.7,
+  "rotate": 0.0,
+  "size": 14.36,
+  "runs": [
+   [
+    "stdout",
+    "mono ink"
+   ]
+  ]
+ },
+ {
+  "id": "c-stderr",
+  "type": "text",
+  "x": 1291.9,
+  "y": 588.0,
+  "w": 56.3,
+  "h": 16.8,
+  "rotate": 0.0,
+  "size": 13.78,
+  "runs": [
+   [
+    "stderr",
+    "mono ink"
+   ]
+  ]
+ },
+ {
+  "id": "c-texture",
+  "type": "text",
+  "x": 1376.7,
+  "y": 578.7,
+  "w": 61.6,
+  "h": 16.8,
+  "rotate": 0.0,
+  "size": 9.33,
+  "runs": [
+   [
+    "texture.png",
+    "mono green"
+   ]
+  ]
+ },
+ {
+  "id": "c-savegame",
+  "type": "text",
+  "x": 1450.1,
+  "y": 569.9,
+  "w": 52.7,
+  "h": 14.7,
+  "rotate": 0.0,
+  "size": 7.32,
+  "runs": [
+   [
+    "savegame.dat",
+    "mono green"
+   ]
+  ]
+ },
+ {
+  "id": "c-file",
+  "type": "text",
+  "x": 1055.3,
+  "y": 576.7,
+  "w": 22.9,
+  "h": 15.2,
+  "rotate": 0.0,
+  "size": 12.46,
+  "runs": [
+   [
+    "File",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "c-descriptors",
+  "type": "text",
+  "x": 1051.3,
+  "y": 600.4,
+  "w": 69.1,
+  "h": 17.8,
+  "rotate": 0.0,
+  "size": 12.34,
+  "runs": [
+   [
+    "Descriptors",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "c-array",
+  "type": "text",
+  "x": 1028.7,
+  "y": 651.0,
+  "w": 57.3,
+  "h": 24.9,
+  "rotate": 0.0,
+  "size": 14.18,
+  "runs": [
+   [
+    "Array of",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "c-info",
+  "type": "text",
+  "x": 1033.5,
+  "y": 674.9,
+  "w": 107.7,
+  "h": 19.5,
+  "rotate": 0.0,
+  "size": 15.08,
+  "runs": [
+   [
+    "info about open",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "c-files",
+  "type": "text",
+  "x": 1034.4,
+  "y": 688.7,
+  "w": 164.7,
+  "h": 24.3,
+  "rotate": 0.0,
+  "size": 16.27,
+  "runs": [
+   [
+    "files for this process",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "c-close",
+  "type": "text",
+  "x": 1522.8,
+  "y": 610.3,
+  "w": 109.2,
+  "h": 32.5,
+  "rotate": 0.0,
+  "size": 14.0,
+  "runs": [
+   [
+    "close(fds[1])",
+    "mono ink"
+   ]
+  ]
+ },
+ {
+  "id": "c-readlbl",
+  "type": "text",
+  "x": 1410.4,
+  "y": 684.0,
+  "w": 27.5,
+  "h": 15.7,
+  "rotate": 0.0,
+  "size": 12.61,
+  "runs": [
+   [
+    "Read",
+    "red"
+   ]
+  ]
+ },
+ {
+  "id": "c-writelbl",
+  "type": "text",
+  "x": 1458.6,
+  "y": 679.9,
+  "w": 42.4,
+  "h": 17.1,
+  "rotate": 0.0,
+  "size": 14.02,
+  "runs": [
+   [
+    "Write",
+    "red"
+   ]
+  ]
+ },
+ {
+  "id": "d-copies",
+  "type": "text",
+  "x": 1193.4,
+  "y": 790.1,
+  "w": 369.4,
+  "h": 33.7,
+  "rotate": 0.0,
+  "size": 21.96,
+  "runs": [
+   [
+    "copies over fd from 1 file to another",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "d-allows",
+  "type": "text",
+  "x": 1229.4,
+  "y": 952.0,
+  "w": 385.7,
+  "h": 35.6,
+  "rotate": 0.0,
+  "size": 21.69,
+  "runs": [
+   [
+    "allows programs to talk to one another",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "e-title",
+  "type": "text",
+  "x": 202.4,
+  "y": 911.1,
+  "w": 199.1,
+  "h": 31.6,
+  "rotate": 0.0,
+  "size": 24.59,
+  "runs": [
+   [
+    "Multi Processing",
+    "bold ink"
+   ]
+  ]
+ },
+ {
+  "id": "e-runs",
+  "type": "text",
+  "x": 422.9,
+  "y": 897.6,
+  "w": 344.3,
+  "h": 31.3,
+  "rotate": 0.0,
+  "size": 18.94,
+  "runs": [
+   [
+    "– Runs a program = new process with ",
+    "ink"
+   ],
+   [
+    "pid",
+    "red"
+   ]
+  ]
+ },
+ {
+  "id": "e-clones",
+  "type": "text",
+  "x": 366.6,
+  "y": 957.0,
+  "w": 243.5,
+  "h": 26.4,
+  "rotate": 0.0,
+  "size": 19.48,
+  "runs": [
+   [
+    "clones 1st process into 2nd",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "e-tparent",
+  "type": "text",
+  "x": 650.8,
+  "y": 950.3,
+  "w": 30.6,
+  "h": 15.2,
+  "rotate": 0.0,
+  "size": 9.81,
+  "runs": [
+   [
+    "parent",
+    "pink"
+   ]
+  ]
+ },
+ {
+  "id": "e-t111",
+  "type": "text",
+  "x": 682.9,
+  "y": 971.1,
+  "w": 28.4,
+  "h": 16.6,
+  "rotate": 0.0,
+  "size": 13.61,
+  "runs": [
+   [
+    "111",
+    "red"
+   ]
+  ]
+ },
+ {
+  "id": "e-tchild",
+  "type": "text",
+  "x": 727.4,
+  "y": 946.2,
+  "w": 31.6,
+  "h": 15.1,
+  "rotate": 0.0,
+  "size": 12.38,
+  "runs": [
+   [
+    "child",
+    "pink"
+   ]
+  ]
+ },
+ {
+  "id": "e-t112",
+  "type": "text",
+  "x": 755.0,
+  "y": 973.4,
+  "w": 18.5,
+  "h": 13.7,
+  "rotate": 0.0,
+  "size": 11.23,
+  "runs": [
+   [
+    "112",
+    "red"
+   ]
+  ]
+ },
+ {
+  "id": "e-tret-p",
+  "type": "text",
+  "x": 637.7,
+  "y": 1019.4,
+  "w": 59.4,
+  "h": 13.7,
+  "rotate": 0.0,
+  "size": 11.23,
+  "runs": [
+   [
+    "returns ",
+    "ink"
+   ],
+   [
+    "112",
+    "red"
+   ]
+  ]
+ },
+ {
+  "id": "e-tret-c",
+  "type": "text",
+  "x": 727.9,
+  "y": 1015.8,
+  "w": 52.8,
+  "h": 16.2,
+  "rotate": 0.0,
+  "size": 11.84,
+  "runs": [
+   [
+    "returns 0",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "e-kill",
+  "type": "text",
+  "x": 209.6,
+  "y": 1107.6,
+  "w": 169.9,
+  "h": 20.9,
+  "rotate": 0.0,
+  "size": 12.31,
+  "runs": [
+   [
+    "kill(process, SIG_KILL)",
+    "mono red"
+   ]
+  ]
+ },
+ {
+  "id": "e-retpid",
+  "type": "text",
+  "x": 549.7,
+  "y": 1120.6,
+  "w": 119.6,
+  "h": 21.7,
+  "rotate": 0.0,
+  "size": 16.08,
+  "runs": [
+   [
+    "→ returns pid of",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "e-exited",
+  "type": "text",
+  "x": 681.6,
+  "y": 1117.2,
+  "w": 39.2,
+  "h": 17.9,
+  "rotate": 0.0,
+  "size": 12.75,
+  "runs": [
+   [
+    "exited",
+    "bold ink"
+   ]
+  ]
+ },
+ {
+  "id": "e-exchild",
+  "type": "text",
+  "x": 731.2,
+  "y": 1116.3,
+  "w": 23.4,
+  "h": 14.6,
+  "rotate": 0.0,
+  "size": 10.83,
+  "runs": [
+   [
+    "child",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "e-lchild",
+  "type": "text",
+  "x": 318.8,
+  "y": 1154.3,
+  "w": 37.3,
+  "h": 14.2,
+  "rotate": 0.0,
+  "size": 11.64,
+  "runs": [
+   [
+    "(child)",
+    "red"
+   ]
+  ]
+ },
+ {
+  "id": "e-lflags",
+  "type": "text",
+  "x": 476.5,
+  "y": 1153.6,
+  "w": 43.8,
+  "h": 15.9,
+  "rotate": 0.0,
+  "size": 13.04,
+  "runs": [
+   [
+    "(flags)",
+    "red"
+   ]
+  ]
+ },
+ {
+  "id": "e-minus1",
+  "type": "text",
+  "x": 294.5,
+  "y": 1184.4,
+  "w": 128.4,
+  "h": 16.5,
+  "rotate": 0.0,
+  "size": 11.74,
+  "runs": [
+   [
+    "-1 for first termination",
+    "red"
+   ]
+  ]
+ },
+ {
+  "id": "e-124",
+  "type": "text",
+  "x": 567.7,
+  "y": 1167.3,
+  "w": 152.9,
+  "h": 20.5,
+  "rotate": 0.0,
+  "size": 10.62,
+  "runs": [
+   [
+    "return 124 // timed out;",
+    "mono ink"
+   ]
+  ]
+ },
+ {
+  "id": "e-another",
+  "type": "text",
+  "x": 497.8,
+  "y": 1212.7,
+  "w": 249.0,
+  "h": 21.2,
+  "rotate": 0.0,
+  "size": 16.92,
+  "runs": [
+   [
+    "→ runs ",
+    "ink"
+   ],
+   [
+    "ANOTHER",
+    "bold ink"
+   ],
+   [
+    " program in the",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "e-current",
+  "type": "text",
+  "x": 562.7,
+  "y": 1239.4,
+  "w": 92.9,
+  "h": 14.5,
+  "rotate": 0.0,
+  "size": 11.89,
+  "runs": [
+   [
+    "current process",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "e-ie",
+  "type": "text",
+  "x": 237.8,
+  "y": 1237.2,
+  "w": 65.3,
+  "h": 12.0,
+  "rotate": 0.0,
+  "size": 9.84,
+  "runs": [
+   [
+    "i.e. process",
+    "green"
+   ]
+  ]
+ },
+ {
+  "id": "e-finished",
+  "type": "text",
+  "x": 311.8,
+  "y": 1230.8,
+  "w": 242.1,
+  "h": 18.0,
+  "rotate": 0.0,
+  "size": 14.76,
+  "runs": [
+   [
+    "→ finished but not cleared up",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "f-shell",
+  "type": "text",
+  "x": 60.5,
+  "y": 1476.8,
+  "w": 465.3,
+  "h": 33.1,
+  "rotate": 0.0,
+  "size": 21.46,
+  "runs": [
+   [
+    "Shell: forks off ",
+    "ink"
+   ],
+   [
+    "child",
+    "blue"
+   ],
+   [
+    " process to run a command",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "f-111",
+  "type": "text",
+  "x": 59.2,
+  "y": 1520.3,
+  "w": 38.3,
+  "h": 24.3,
+  "rotate": 0.0,
+  "size": 19.93,
+  "runs": [
+   [
+    "(111)",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "f-fork",
+  "type": "text",
+  "x": 638.6,
+  "y": 1409.5,
+  "w": 40.0,
+  "h": 18.6,
+  "rotate": 0.0,
+  "size": 11.11,
+  "runs": [
+   [
+    "fork()",
+    "mono ink"
+   ]
+  ]
+ },
+ {
+  "id": "f-child1",
+  "type": "text",
+  "x": 710.8,
+  "y": 1449.6,
+  "w": 43.8,
+  "h": 13.6,
+  "rotate": 0.0,
+  "size": 10.48,
+  "runs": [
+   [
+    "child",
+    "blue"
+   ],
+   [
+    " (112)",
+    "blue"
+   ]
+  ]
+ },
+ {
+  "id": "f-execvp",
+  "type": "text",
+  "x": 716.2,
+  "y": 1472.9,
+  "w": 82.3,
+  "h": 22.9,
+  "rotate": 0.0,
+  "size": 11.43,
+  "runs": [
+   [
+    "execvp(game)",
+    "mono ink"
+   ]
+  ]
+ },
+ {
+  "id": "f-child2",
+  "type": "text",
+  "x": 694.6,
+  "y": 1509.5,
+  "w": 37.1,
+  "h": 17.5,
+  "rotate": 0.0,
+  "size": 8.88,
+  "runs": [
+   [
+    "child",
+    "blue"
+   ],
+   [
+    " (112)",
+    "blue"
+   ]
+  ]
+ },
+ {
+  "id": "f-waitpid",
+  "type": "text",
+  "x": 585.3,
+  "y": 1544.6,
+  "w": 55.0,
+  "h": 12.8,
+  "rotate": 0.0,
+  "size": 7.64,
+  "runs": [
+   [
+    "waitpid(112)",
+    "mono ink"
+   ]
+  ]
+ },
+ {
+  "id": "g-os",
+  "type": "text",
+  "x": 869.9,
+  "y": 1316.8,
+  "w": 301.6,
+  "h": 24.7,
+  "rotate": 0.0,
+  "size": 16.96,
+  "runs": [
+   [
+    "OS: Windows, Linux, iOS, Android, Linux",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "g-files",
+  "type": "text",
+  "x": 880.3,
+  "y": 1452.5,
+  "w": 70.0,
+  "h": 19.4,
+  "rotate": 0.0,
+  "size": 15.91,
+  "runs": [
+   [
+    "Files, VM",
+    "blue"
+   ]
+  ]
+ },
+ {
+  "id": "g-network",
+  "type": "text",
+  "x": 1065.2,
+  "y": 1452.8,
+  "w": 58.7,
+  "h": 18.2,
+  "rotate": 0.0,
+  "size": 9.62,
+  "runs": [
+   [
+    "Network, I/O",
+    "blue"
+   ]
+  ]
+ },
+ {
+  "id": "g-keyboard",
+  "type": "text",
+  "x": 876.8,
+  "y": 1483.1,
+  "w": 88.5,
+  "h": 21.5,
+  "rotate": 0.0,
+  "size": 13.17,
+  "runs": [
+   [
+    "Keyboard, USB",
+    "purple"
+   ]
+  ]
+ },
+ {
+  "id": "g-cpu",
+  "type": "text",
+  "x": 1048.5,
+  "y": 1482.9,
+  "w": 92.5,
+  "h": 20.2,
+  "rotate": 0.0,
+  "size": 13.64,
+  "runs": [
+   [
+    "CPU, RAM, SSD",
+    "purple"
+   ]
+  ]
+ },
+ {
+  "id": "g-disk",
+  "type": "text",
+  "x": 935.2,
+  "y": 1528.4,
+  "w": 112.7,
+  "h": 25.2,
+  "rotate": 0.0,
+  "size": 20.66,
+  "runs": [
+   [
+    "Disk/SSD",
+    "bold blue"
+   ]
+  ]
+ },
+ {
+  "id": "g-game",
+  "type": "text",
+  "x": 917.0,
+  "y": 1565.9,
+  "w": 75.9,
+  "h": 19.6,
+  "rotate": 0.0,
+  "size": 15.81,
+  "runs": [
+   [
+    "game.exe",
+    "mono green"
+   ]
+  ]
+ },
+ {
+  "id": "g-photos",
+  "type": "text",
+  "x": 918.9,
+  "y": 1585.0,
+  "w": 75.4,
+  "h": 17.6,
+  "rotate": 0.0,
+  "size": 12.57,
+  "runs": [
+   [
+    "photos.jpg",
+    "mono green"
+   ]
+  ]
+ },
+ {
+  "id": "g-essay",
+  "type": "text",
+  "x": 922.0,
+  "y": 1604.9,
+  "w": 82.1,
+  "h": 19.4,
+  "rotate": 0.0,
+  "size": 15.2,
+  "runs": [
+   [
+    "essay.pdf",
+    "mono green"
+   ]
+  ]
+ },
+ {
+  "id": "g-save",
+  "type": "text",
+  "x": 1097.7,
+  "y": 1623.2,
+  "w": 71.3,
+  "h": 16.9,
+  "rotate": 0.0,
+  "size": 13.86,
+  "runs": [
+   [
+    "save game",
+    "green"
+   ]
+  ]
+ },
+ {
+  "id": "g-user",
+  "type": "text",
+  "x": 926.3,
+  "y": 1669.8,
+  "w": 27.7,
+  "h": 11.2,
+  "rotate": 0.0,
+  "size": 9.18,
+  "runs": [
+   [
+    "User",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "g-kernel",
+  "type": "text",
+  "x": 1008.3,
+  "y": 1666.7,
+  "w": 41.7,
+  "h": 17.8,
+  "rotate": 0.0,
+  "size": 14.38,
+  "runs": [
+   [
+    "kernel",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "g-ram",
+  "type": "text",
+  "x": 947.9,
+  "y": 1698.5,
+  "w": 63.8,
+  "h": 23.0,
+  "rotate": 0.0,
+  "size": 18.86,
+  "runs": [
+   [
+    "RAM",
+    "bold pink"
+   ]
+  ]
+ },
+ {
+  "id": "g-makes",
+  "type": "text",
+  "x": 933.5,
+  "y": 1998.3,
+  "w": 85.1,
+  "h": 13.1,
+  "rotate": 0.0,
+  "size": 10.74,
+  "runs": [
+   [
+    "makes decisions",
+    "green"
+   ]
+  ]
+ },
+ {
+  "id": "h-title",
+  "type": "text",
+  "x": 1332.3,
+  "y": 1147.4,
+  "w": 132.8,
+  "h": 25.6,
+  "rotate": 0.0,
+  "size": 18.98,
+  "runs": [
+   [
+    "System Calls –",
+    "bold ink"
+   ]
+  ]
+ },
+ {
+  "id": "h-switches",
+  "type": "text",
+  "x": 1477.3,
+  "y": 1142.7,
+  "w": 346.6,
+  "h": 20.9,
+  "rotate": 0.0,
+  "size": 14.7,
+  "runs": [
+   [
+    "switches to ",
+    "ink"
+   ],
+   [
+    "kernel",
+    "red"
+   ],
+   [
+    " mode and then back to ",
+    "ink"
+   ],
+   [
+    "user mode",
+    "blue"
+   ]
+  ]
+ },
+ {
+  "id": "h-openret",
+  "type": "text",
+  "x": 1590.2,
+  "y": 1176.4,
+  "w": 249.4,
+  "h": 28.2,
+  "rotate": 0.0,
+  "size": 18.05,
+  "runs": [
+   [
+    "→ returns file descriptor (FD)",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "h-closeret",
+  "type": "text",
+  "x": 1455.2,
+  "y": 1221.4,
+  "w": 116.8,
+  "h": 15.9,
+  "rotate": 0.0,
+  "size": 13.04,
+  "runs": [
+   [
+    "→ returns 0, -1",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "h-ticket",
+  "type": "text",
+  "x": 1649.7,
+  "y": 1214.5,
+  "w": 203.2,
+  "h": 24.2,
+  "rotate": 0.0,
+  "size": 16.33,
+  "runs": [
+   [
+    "• ticket number, e.g. ",
+    "ink"
+   ],
+   [
+    "3, 4, 5",
+    "red"
+   ]
+  ]
+ },
+ {
+  "id": "h-012",
+  "type": "text",
+  "x": 1650.6,
+  "y": 1244.5,
+  "w": 193.8,
+  "h": 21.3,
+  "rotate": 0.0,
+  "size": 17.47,
+  "runs": [
+   [
+    "• 0, 1, 2 are pre-opened",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "h-ioe",
+  "type": "text",
+  "x": 1637.8,
+  "y": 1270.0,
+  "w": 83.4,
+  "h": 11.7,
+  "rotate": 0.0,
+  "size": 8.97,
+  "runs": [
+   [
+    "input, output, error",
+    "blue"
+   ]
+  ]
+ },
+ {
+  "id": "h-readret",
+  "type": "text",
+  "x": 1617.3,
+  "y": 1281.7,
+  "w": 270.4,
+  "h": 27.6,
+  "rotate": 0.0,
+  "size": 20.77,
+  "runs": [
+   [
+    "→ returns bytes read, 0 EOF",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "h-both",
+  "type": "text",
+  "x": 1401.7,
+  "y": 1320.0,
+  "w": 215.7,
+  "h": 19.0,
+  "rotate": 0.0,
+  "size": 15.19,
+  "runs": [
+   [
+    "both may transfer fewer bytes",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "h-err1",
+  "type": "text",
+  "x": 1628.5,
+  "y": 1313.4,
+  "w": 70.7,
+  "h": 17.0,
+  "rotate": 0.0,
+  "size": 13.94,
+  "runs": [
+   [
+    "-1 error",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "h-writeret",
+  "type": "text",
+  "x": 1624.9,
+  "y": 1351.4,
+  "w": 270.3,
+  "h": 27.6,
+  "rotate": 0.0,
+  "size": 20.76,
+  "runs": [
+   [
+    "→ returns bytes read, 0 EOF",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "h-err2",
+  "type": "text",
+  "x": 1479.1,
+  "y": 1383.1,
+  "w": 70.7,
+  "h": 17.0,
+  "rotate": 0.0,
+  "size": 13.94,
+  "runs": [
+   [
+    "-1 error",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "j-note1",
+  "type": "text",
+  "x": 2280.4,
+  "y": 1293.7,
+  "w": 188.6,
+  "h": 28.4,
+  "rotate": 0.0,
+  "size": 22.78,
+  "runs": [
+   [
+    "Note: not present",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "j-note2",
+  "type": "text",
+  "x": 2314.2,
+  "y": 1336.2,
+  "w": 120.4,
+  "h": 32.8,
+  "rotate": 0.0,
+  "size": 26.64,
+  "runs": [
+   [
+    "in Unix V6",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "j-readonly",
+  "type": "text",
+  "x": 3351.0,
+  "y": 1286.5,
+  "w": 197.1,
+  "h": 71.5,
+  "rotate": 0.0,
+  "size": 43.85,
+  "runs": [
+   [
+    "read only",
+    "bold pink"
+   ]
+  ]
+ },
+ {
+  "id": "k-512",
+  "type": "text",
+  "x": 2033.4,
+  "y": 1450.8,
+  "w": 58.0,
+  "h": 42.5,
+  "rotate": 0.0,
+  "size": 25.66,
+  "runs": [
+   [
+    "512 B",
+    "red"
+   ]
+  ]
+ },
+ {
+  "id": "k-bubble",
+  "type": "text",
+  "x": 2268.0,
+  "y": 1429.5,
+  "w": 204.2,
+  "h": 29.8,
+  "rotate": 0.0,
+  "size": 24.44,
+  "runs": [
+   [
+    "0 = free, 1 = used",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "k-2",
+  "type": "text",
+  "x": 2520.6,
+  "y": 1442.1,
+  "w": 26.7,
+  "h": 29.7,
+  "rotate": 0.0,
+  "size": 24.35,
+  "runs": [
+   [
+    "2",
+    "pink"
+   ]
+  ]
+ },
+ {
+  "id": "k-boot",
+  "type": "text",
+  "x": 1868.6,
+  "y": 1542.6,
+  "w": 36.1,
+  "h": 23.6,
+  "rotate": 0.0,
+  "size": 16.56,
+  "runs": [
+   [
+    "Boot",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "k-block",
+  "type": "text",
+  "x": 1872.1,
+  "y": 1588.9,
+  "w": 41.1,
+  "h": 18.9,
+  "rotate": 0.0,
+  "size": 15.5,
+  "runs": [
+   [
+    "Block",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "k-super",
+  "type": "text",
+  "x": 1957.3,
+  "y": 1567.1,
+  "w": 74.5,
+  "h": 28.5,
+  "rotate": 0.0,
+  "size": 14.67,
+  "runs": [
+   [
+    "Superblock",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "k-inodes",
+  "type": "text",
+  "x": 2099.9,
+  "y": 1566.3,
+  "w": 97.7,
+  "h": 27.9,
+  "rotate": 0.0,
+  "size": 22.88,
+  "runs": [
+   [
+    "Inodes",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "k-bitmap",
+  "type": "text",
+  "x": 2291.5,
+  "y": 1565.0,
+  "w": 77.9,
+  "h": 31.9,
+  "rotate": 0.0,
+  "size": 25.97,
+  "runs": [
+   [
+    "Bitmap",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "k-data",
+  "type": "text",
+  "x": 2495.9,
+  "y": 1561.4,
+  "w": 171.1,
+  "h": 36.2,
+  "rotate": 0.0,
+  "size": 29.68,
+  "runs": [
+   [
+    "Data blocks",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "k-sizes1",
+  "type": "text",
+  "x": 1945.1,
+  "y": 1673.7,
+  "w": 102.4,
+  "h": 18.2,
+  "rotate": 0.0,
+  "size": 14.92,
+  "runs": [
+   [
+    "→ sizes of",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "k-sizes2",
+  "type": "text",
+  "x": 1947.5,
+  "y": 1703.1,
+  "w": 85.4,
+  "h": 18.7,
+  "rotate": 0.0,
+  "size": 13.51,
+  "runs": [
+   [
+    "other regions",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "k-says1",
+  "type": "text",
+  "x": 2268.2,
+  "y": 1656.8,
+  "w": 174.0,
+  "h": 34.9,
+  "rotate": 0.0,
+  "size": 27.19,
+  "runs": [
+   [
+    "→ says if data",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "k-says2",
+  "type": "text",
+  "x": 2269.4,
+  "y": 1696.7,
+  "w": 167.8,
+  "h": 33.7,
+  "rotate": 0.0,
+  "size": 24.68,
+  "runs": [
+   [
+    "block N is free",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "k-says3",
+  "type": "text",
+  "x": 2275.5,
+  "y": 1741.8,
+  "w": 120.1,
+  "h": 21.8,
+  "rotate": 0.0,
+  "size": 17.88,
+  "runs": [
+   [
+    "or taken",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "k-or",
+  "type": "text",
+  "x": 3128.0,
+  "y": 1572.0,
+  "w": 29.5,
+  "h": 17.6,
+  "rotate": 0.0,
+  "size": 14.43,
+  "runs": [
+   [
+    "or",
+    "ink"
+   ]
+  ]
+ },
+ {
+  "id": "l-32b",
+  "type": "text",
+  "x": 1966.2,
+  "y": 1968.8,
+  "w": 40.9,
+  "h": 28.4,
+  "rotate": 0.0,
+  "size": 20.87,
+  "runs": [
+   [
+    "32 B",
+    "red"
+   ]
+  ]
+ },
+ {
+  "id": "l-512b",
+  "type": "text",
+  "x": 1988.1,
+  "y": 2075.4,
+  "w": 30.7,
+  "h": 18.6,
+  "rotate": 0.0,
+  "size": 13.58,
+  "runs": [
+   [
+    "512 B",
+    "red"
+   ]
+  ]
+ },
+ {
+  "id": "l-n1",
+  "type": "text",
+  "x": 2393.2,
+  "y": 1948.8,
+  "w": 11.7,
+  "h": 24.0,
+  "rotate": 0.0,
+  "size": 19.68,
+  "runs": [
+   [
+    "1",
+    "pink"
+   ]
+  ]
+ },
+ {
+  "id": "l-n4",
+  "type": "text",
+  "x": 2426.9,
+  "y": 2065.3,
+  "w": 17.9,
+  "h": 22.0,
+  "rotate": 0.0,
+  "size": 18.04,
+  "runs": [
+   [
+    "4",
+    "pink"
+   ]
+  ]
+ },
+ {
+  "id": "l-n5",
+  "type": "text",
+  "x": 2338.5,
+  "y": 2166.2,
+  "w": 8.8,
+  "h": 14.6,
+  "rotate": 0.0,
+  "size": 11.97,
+  "runs": [
+   [
+    "5",
+    "pink"
+   ]
+  ]
+ },
+ {
+  "id": "l-n3",
+  "type": "text",
+  "x": 2350.0,
+  "y": 2232.0,
+  "w": 10.7,
+  "h": 24.7,
+  "rotate": 0.0,
+  "size": 20.25,
+  "runs": [
+   [
+    "3",
+    "pink"
+   ]
+  ]
+ },
+ {
+  "id": "l-32",
+  "type": "text",
+  "x": 2010.8,
+  "y": 2137.0,
+  "w": 12.6,
+  "h": 12.8,
+  "rotate": 0.0,
+  "size": 10.5,
+  "runs": [
+   [
+    "32",
+    "red"
+   ]
+  ]
+ },
+ {
+  "id": "l-entries",
+  "type": "text",
+  "x": 2010.8,
+  "y": 2156.6,
+  "w": 26.6,
+  "h": 13.7,
+  "rotate": 0.0,
+  "size": 7.78,
+  "runs": [
+   [
+    "entries",
+    "red"
+   ]
+  ]
+ },
+ {
+  "id": "l-dir",
+  "type": "text",
+  "x": 2249.7,
+  "y": 2153.0,
+  "w": 27.5,
+  "h": 8.2,
+  "rotate": 0.0,
+  "size": 6.17,
+  "runs": [
+   [
+    "directory",
+    "red"
+   ]
+  ]
+ },
+ {
+  "id": "l-blocks",
+  "type": "text",
+  "x": 2254.0,
+  "y": 2164.1,
+  "w": 21.0,
+  "h": 9.4,
+  "rotate": 0.0,
+  "size": 7.24,
+  "runs": [
+   [
+    "blocks",
+    "red"
+   ]
+  ]
+ },
+ {
+  "id": "l-14b",
+  "type": "text",
+  "x": 2065.3,
+  "y": 2244.7,
+  "w": 18.4,
+  "h": 8.3,
+  "rotate": 0.0,
+  "size": 6.81,
+  "runs": [
+   [
+    "14 B",
+    "red"
+   ]
+  ]
+ },
+ {
+  "id": "l-2b",
+  "type": "text",
+  "x": 2121.6,
+  "y": 2228.5,
+  "w": 12.1,
+  "h": 7.8,
+  "rotate": 0.0,
+  "size": 6.4,
+  "runs": [
+   [
+    "2 B",
+    "red"
+   ]
+  ]
+ },
+ {
+  "id": "l-hello",
+  "type": "text",
+  "x": 2389.8,
+  "y": 2234.0,
+  "w": 41.5,
+  "h": 19.9,
+  "rotate": 0.0,
+  "size": 15.92,
+  "runs": [
+   [
+    "hello!",
+    "white bold"
+   ]
+  ]
+ },
+ {
+  "id": "l-notes",
+  "type": "text",
+  "x": 2397.7,
+  "y": 2330.6,
+  "w": 67.1,
+  "h": 15.2,
+  "rotate": 0.0,
+  "size": 12.43,
+  "runs": [
+   [
+    "notes.txt",
+    "mono blue"
+   ]
+  ]
+ },
+ {
+  "id": "l-s1",
+  "type": "text",
+  "x": 2599.6,
+  "y": 1940.2,
+  "w": 6.5,
+  "h": 11.9,
+  "rotate": 0.0,
+  "size": 9.76,
+  "runs": [
+   [
+    "1.",
+    "pink"
+   ]
+  ]
+ },
+ {
+  "id": "l-s2",
+  "type": "text",
+  "x": 2598.7,
+  "y": 1959.9,
+  "w": 10.4,
+  "h": 9.8,
+  "rotate": 0.0,
+  "size": 8.04,
+  "runs": [
+   [
+    "2.",
+    "pink"
+   ]
+  ]
+ },
+ {
+  "id": "l-s3",
+  "type": "text",
+  "x": 2598.3,
+  "y": 1975.5,
+  "w": 5.9,
+  "h": 13.3,
+  "rotate": 0.0,
+  "size": 7.2,
+  "runs": [
+   [
+    "3.",
+    "pink"
+   ]
+  ]
+ },
+ {
+  "id": "m-1",
+  "type": "text",
+  "x": 26.4,
+  "y": 2628.0,
+  "w": 79.1,
+  "h": 18.9,
+  "rotate": 0.0,
+  "size": 13.41,
+  "runs": [
+   [
+    "• Persistent",
+    "blue"
+   ]
+  ]
+ },
+ {
+  "id": "m-2",
+  "type": "text",
+  "x": 27.2,
+  "y": 2648.6,
+  "w": 128.0,
+  "h": 15.8,
+  "rotate": 0.0,
+  "size": 12.96,
+  "runs": [
+   [
+    "• Sector addressable",
+    "blue"
+   ]
+  ]
+ },
+ {
+  "id": "m-3",
+  "type": "text",
+  "x": 27.2,
+  "y": 2667.5,
+  "w": 99.0,
+  "h": 17.4,
+  "rotate": 0.0,
+  "size": 14.27,
+  "runs": [
+   [
+    "• 256–1024 GB",
+    "blue"
+   ]
+  ]
+ },
+ {
+  "id": "m-4",
+  "type": "text",
+  "x": 27.4,
+  "y": 2698.7,
+  "w": 104.0,
+  "h": 25.2,
+  "rotate": 0.0,
+  "size": 13.03,
+  "runs": [
+   [
+    "• Non-persistent",
+    "pink"
+   ]
+  ]
+ },
+ {
+  "id": "m-5",
+  "type": "text",
+  "x": 26.2,
+  "y": 2729.9,
+  "w": 126.6,
+  "h": 24.1,
+  "rotate": 0.0,
+  "size": 14.39,
+  "runs": [
+   [
+    "• Byte addressable",
+    "pink"
+   ]
+  ]
+ },
+ {
+  "id": "m-6",
+  "type": "text",
+  "x": 30.6,
+  "y": 2753.7,
+  "w": 88.4,
+  "h": 18.4,
+  "rotate": 0.0,
+  "size": 15.09,
+  "runs": [
+   [
+    "• 8–32 GB",
+    "pink"
+   ]
+  ]
+ },
+ {
+  "id": "b-pipe",
+  "type": "text",
+  "x": 902.3,
+  "y": 293.4,
+  "w": 64.4,
+  "h": 28.3,
+  "rotate": 0,
+  "size": 17.89,
+  "runs": [
+   [
+    "pipe()",
+    "red mono"
+   ]
+  ],
+  "typed": true
+ },
+ {
+  "id": "d-dup2",
+  "type": "text",
+  "x": 1061.2,
+  "y": 785.4,
+  "w": 73.3,
+  "h": 28.3,
+  "rotate": 0,
+  "size": 20.36,
+  "runs": [
+   [
+    "dup2()",
+    "blue mono"
+   ]
+  ],
+  "typed": true
+ },
+ {
+  "id": "e-fork",
+  "type": "text",
+  "x": 220.1,
+  "y": 961.5,
+  "w": 62.6,
+  "h": 26.7,
+  "rotate": 0,
+  "size": 14.9,
+  "runs": [
+   [
+    "fork ()",
+    "ink mono"
+   ]
+  ],
+  "typed": true
+ },
+ {
+  "id": "e-waitpid",
+  "type": "text",
+  "x": 200.9,
+  "y": 1128.7,
+  "w": 342.2,
+  "h": 19.1,
+  "rotate": 0,
+  "size": 11.41,
+  "runs": [
+   [
+    "pid_t waitpid(pid_t pid, int *status, int options)",
+    "yellow mono"
+   ]
+  ],
+  "typed": true
+ },
+ {
+  "id": "e-execvp",
+  "type": "text",
+  "x": 222.5,
+  "y": 1217.6,
+  "w": 265.0,
+  "h": 17.7,
+  "rotate": 0,
+  "size": 11.62,
+  "runs": [
+   [
+    "execvp(const char *path, char *argv[])",
+    "yellow mono"
+   ]
+  ],
+  "typed": true
+ },
+ {
+  "id": "h-open",
+  "type": "text",
+  "x": 1349.5,
+  "y": 1189.0,
+  "w": 238.5,
+  "h": 14.8,
+  "rotate": 0,
+  "size": 9.7,
+  "runs": [
+   [
+    "int open (const char *pathname, int flag)",
+    "yellow mono bold"
+   ]
+  ],
+  "typed": true
+ },
+ {
+  "id": "h-close",
+  "type": "text",
+  "x": 1350.9,
+  "y": 1219.3,
+  "w": 97.5,
+  "h": 15.4,
+  "rotate": 0,
+  "size": 9.03,
+  "runs": [
+   [
+    "int close (int fd)",
+    "yellow mono bold"
+   ]
+  ],
+  "typed": true
+ },
+ {
+  "id": "h-read",
+  "type": "text",
+  "x": 1353.9,
+  "y": 1289.3,
+  "w": 254.8,
+  "h": 15.4,
+  "rotate": 0,
+  "size": 9.23,
+  "runs": [
+   [
+    "ssize_t read (int fd, void *buf, size_t count)",
+    "yellow mono"
+   ]
+  ],
+  "typed": true
+ },
+ {
+  "id": "h-write",
+  "type": "text",
+  "x": 1359.4,
+  "y": 1360.0,
+  "w": 256.9,
+  "h": 15.5,
+  "rotate": 0,
+  "size": 9.11,
+  "runs": [
+   [
+    "ssize_t write (int fd, void *buf, size_t count)",
+    "yellow mono"
+   ]
+  ],
+  "typed": true
+ },
+ {
+  "id": "j-mountv6",
+  "type": "text",
+  "x": 2063.4,
+  "y": 689.8,
+  "w": 102.3,
+  "h": 29.7,
+  "rotate": 0,
+  "size": 24.35,
+  "runs": [
+   [
+    "mountv6",
+    "pink mono"
+   ]
+  ],
+  "typed": true
+ },
+ {
+  "id": "k-unixv6",
+  "type": "text",
+  "x": 2911.7,
+  "y": 1549.5,
+  "w": 161.5,
+  "h": 51.0,
+  "rotate": 0,
+  "size": 41.82,
+  "runs": [
+   [
+    "Unix V6",
+    "ink bold"
+   ]
+  ],
+  "typed": true
+ },
+ {
+  "id": "l-sector",
+  "type": "text",
+  "x": 1917.8,
+  "y": 1903.3,
+  "w": 118.2,
+  "h": 44.2,
+  "rotate": 0,
+  "size": 34.63,
+  "runs": [
+   [
+    "Sector",
+    "indigo bold"
+   ]
+  ],
+  "typed": true
+ },
+ {
+  "id": "l-small",
+  "type": "text",
+  "x": 2209.0,
+  "y": 1960.1,
+  "w": 83.1,
+  "h": 10.3,
+  "rotate": 0,
+  "size": 8.43,
+  "runs": [
+   [
+    "Small: all 8 are direct",
+    "ink"
+   ]
+  ],
+  "typed": true
+ },
+ {
+  "id": "l-large",
+  "type": "text",
+  "x": 2208.8,
+  "y": 1972.9,
+  "w": 139.4,
+  "h": 10.3,
+  "rotate": 0,
+  "size": 8.35,
+  "runs": [
+   [
+    "Large: first 7 singly last one doubly",
+    "ink"
+   ]
+  ],
+  "typed": true
+ },
+ {
+  "id": "l-step1",
+  "type": "text",
+  "x": 2616.9,
+  "y": 1939.8,
+  "w": 234.1,
+  "h": 14.9,
+  "rotate": 0,
+  "size": 12.22,
+  "runs": [
+   [
+    "Claim inode 16: allocated, nlink 1, size 0",
+    "purple bold"
+   ]
+  ],
+  "typed": true
+ },
+ {
+  "id": "l-step2",
+  "type": "text",
+  "x": 2617.0,
+  "y": 1958.4,
+  "w": 165.2,
+  "h": 14.9,
+  "rotate": 0,
+  "size": 12.08,
+  "runs": [
+   [
+    "Set bitmap bit for block 876",
+    "purple bold"
+   ]
+  ],
+  "typed": true
+ },
+ {
+  "id": "l-step3",
+  "type": "text",
+  "x": 2617.3,
+  "y": 1976.8,
+  "w": 192.2,
+  "h": 15.0,
+  "rotate": 0,
+  "size": 11.87,
+  "runs": [
+   [
+    "Write the text into the block 876",
+    "purple bold"
+   ]
+  ],
+  "typed": true
+ },
+ {
+  "id": "l-step4n",
+  "type": "text",
+  "x": 2593.8,
+  "y": 1995.3,
+  "w": 11.9,
+  "h": 14.9,
+  "rotate": 0,
+  "size": 12.22,
+  "runs": [
+   [
+    "4.",
+    "purple bold"
+   ]
+  ],
+  "typed": true
+ },
+ {
+  "id": "l-step4",
+  "type": "text",
+  "x": 2616.7,
+  "y": 1995.3,
+  "w": 200.5,
+  "h": 14.9,
+  "rotate": 0,
+  "size": 12.22,
+  "runs": [
+   [
+    "Update inode 16: size, i_addr[0] =",
+    "purple bold"
+   ]
+  ],
+  "typed": true
+ },
+ {
+  "id": "l-step4b",
+  "type": "text",
+  "x": 2616.9,
+  "y": 2013.8,
+  "w": 23.5,
+  "h": 14.9,
+  "rotate": 0,
+  "size": 12.22,
+  "runs": [
+   [
+    "876",
+    "purple bold"
+   ]
+  ],
+  "typed": true
+ },
+ {
+  "id": "l-step5n",
+  "type": "text",
+  "x": 2593.6,
+  "y": 2032.3,
+  "w": 11.5,
+  "h": 14.9,
+  "rotate": 0,
+  "size": 12.22,
+  "runs": [
+   [
+    "5.",
+    "purple bold"
+   ]
+  ],
+  "typed": true
+ },
+ {
+  "id": "l-step5",
+  "type": "text",
+  "x": 2617.3,
+  "y": 2032.3,
+  "w": 257.1,
+  "h": 14.9,
+  "rotate": 0,
+  "size": 11.83,
+  "runs": [
+   [
+    "Write disk and (16, “note.txt”) into free slot",
+    "purple bold"
+   ]
+  ],
+  "typed": true
+ },
+ {
+  "id": "img-terminal",
+  "type": "image",
+  "x": 209.3,
+  "y": 1346.2,
+  "w": 209.2,
+  "h": 126.7,
+  "src": "/notes/cs111/terminal.png",
+  "alt": "Terminal running ls -l"
+ },
+ {
+  "id": "img-os-layers",
+  "type": "image",
+  "x": 864.1,
+  "y": 1363.2,
+  "w": 287.3,
+  "h": 143.7,
+  "src": "/notes/cs111/os-layers.jpg",
+  "alt": "OS layers: users, application programs, operating system, hardware"
+ },
+ {
+  "id": "img-ssd",
+  "type": "image",
+  "x": 1011.1,
+  "y": 1566.4,
+  "w": 48.4,
+  "h": 58.1,
+  "src": "/notes/cs111/ssd.png",
+  "alt": "SSD"
+ },
+ {
+  "id": "img-ram-stick",
+  "type": "image",
+  "x": 1067.4,
+  "y": 1672.5,
+  "w": 66.0,
+  "h": 69.2,
+  "src": "/notes/cs111/ram-stick.png",
+  "alt": "RAM stick"
+ },
+ {
+  "id": "img-desk",
+  "type": "image",
+  "x": 987.7,
+  "y": 1718.6,
+  "w": 79.6,
+  "h": 79.6,
+  "src": "/notes/cs111/desk.jpg",
+  "alt": "Desk"
+ },
+ {
+  "id": "img-user",
+  "type": "image",
+  "x": 803.7,
+  "y": 1618.3,
+  "w": 48.6,
+  "h": 48.6,
+  "src": "/notes/cs111/user.jpg",
+  "alt": "User"
+ },
+ {
+  "id": "img-cpu",
+  "type": "image",
+  "x": 936.2,
+  "y": 1918.2,
+  "w": 70.9,
+  "h": 70.9,
+  "src": "/notes/cs111/cpu.jpg",
+  "alt": "CPU"
+ },
+ {
+  "id": "img-ticket",
+  "type": "image",
+  "x": 874.8,
+  "y": 540.1,
+  "w": 160.2,
+  "h": 106.3,
+  "src": "/notes/cs111/ticket.jpg",
+  "alt": "Ticket"
+ },
+ {
+  "id": "img-doc",
+  "type": "image",
+  "x": 1869.5,
+  "y": 870.8,
+  "w": 99.0,
+  "h": 99.0,
+  "src": "/notes/cs111/doc.png",
+  "alt": "Document icon"
+ },
+ {
+  "id": "img-librarian",
+  "type": "image",
+  "x": 2202.5,
+  "y": 593.5,
+  "w": 192.7,
+  "h": 192.7,
+  "src": "/notes/cs111/librarian.jpg",
+  "alt": "Librarian"
+ },
+ {
+  "id": "img-crash-table",
+  "type": "image",
+  "x": 2551.3,
+  "y": 626.6,
+  "w": 1022.3,
+  "h": 578.0,
+  "src": "/notes/cs111/crash-table.jpg",
+  "alt": "Crash outcomes: journaling vs ordered writes vs fsck"
+ },
+ {
+  "id": "img-bookshelf",
+  "type": "image",
+  "x": 2102.9,
+  "y": 1470.7,
+  "w": 101.3,
+  "h": 100.3,
+  "src": "/notes/cs111/bookshelf.png",
+  "alt": "Bookshelf"
+ },
+ {
+  "id": "img-books",
+  "type": "image",
+  "x": 2682.4,
+  "y": 1537.7,
+  "w": 103.6,
+  "h": 80.5,
+  "src": "/notes/cs111/books.jpg",
+  "alt": "Books"
+ },
+ {
+  "id": "img-fat",
+  "type": "image",
+  "x": 3206.5,
+  "y": 1514.2,
+  "w": 143.8,
+  "h": 105.9,
+  "src": "/notes/cs111/fat.jpg",
+  "alt": "File Allocation Table"
+ },
+ {
+  "id": "img-sector-table",
+  "type": "image",
+  "x": 1913.6,
+  "y": 1997.8,
+  "w": 580.5,
+  "h": 222.6,
+  "src": "/notes/cs111/sector-table.jpg",
+  "alt": "Unix V6 inode and block table"
+ },
+ {
+  "id": "img-notes-icon",
+  "type": "image",
+  "x": 2462.8,
+  "y": 2207.0,
+  "w": 37.0,
+  "h": 37.5,
+  "src": "/notes/cs111/notes-icon.jpg",
+  "alt": "Note icon"
+ },
+ {
+  "id": "svg-fork-timeline",
+  "type": "svg",
+  "x": 221.2,
+  "y": 991.8,
+  "w": 320.2,
+  "h": 82.1,
+  "diagram": "fork-timeline",
+  "label": "fork() timeline: parent and child both print Bye-bye"
+ },
+ {
+  "id": "svg-pipe-examples",
+  "type": "svg",
+  "x": 1052.8,
+  "y": 857.1,
+  "w": 550.8,
+  "h": 79.0,
+  "diagram": "pipe-examples",
+  "label": "Pipeline examples"
+ },
+ {
+  "id": "st-fork",
+  "type": "stepper",
+  "x": 622.3,
+  "y": 940.4,
+  "w": 160.5,
+  "h": 102.7,
+  "stepper": "fork",
+  "title": "fork(): one process becomes two"
+ },
+ {
+  "id": "st-shell",
+  "type": "stepper",
+  "x": 580,
+  "y": 1400,
+  "w": 260,
+  "h": 162,
+  "stepper": "shell",
+  "title": "How a shell runs a command"
+ },
+ {
+  "id": "st-pipe",
+  "type": "stepper",
+  "x": 1135,
+  "y": 520,
+  "w": 505,
+  "h": 210,
+  "stepper": "pipe-dup2",
+  "title": "pipe() + dup2(): cat notes.txt | less"
+ },
+ {
+  "id": "st-create",
+  "type": "stepper",
+  "x": 2588,
+  "y": 1934,
+  "w": 292,
+  "h": 116,
+  "stepper": "create-file",
+  "title": "Creating a file, block by block"
+ }
+]

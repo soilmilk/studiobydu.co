@@ -185,3 +185,100 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* ---------- Notes boards (/notes) ---------- */
+:root {
+  --nb-paper: #ffffff;
+  --nb-canvas: #f4f4f2;
+  --nb-ink: #111111;
+  --nb-red: #ff1a26;
+  --nb-blue: #1a8cff;
+  --nb-green: #1fbf55;
+  --nb-pink: #c20061;
+  --nb-purple: #ad0483;
+  --nb-yellow: #d9a800;
+  --nb-indigo: #371e98;
+  --nb-olive: #7c943b;
+  --nb-darkgreen: #0b9b03;
+  --nb-white: #ffffff;
+  --nb-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  --nb-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --nb-safe: #dff0d4;
+  --nb-caveat: #fbedcf;
+  --nb-loss: #f8dcdc;
+  --nb-na: #ececec;
+}
+.dark {
+  --nb-paper: #17181b;
+  --nb-canvas: #0c0d0f;
+  --nb-ink: #ececec;
+  --nb-red: #ff5a62;
+  --nb-blue: #5aaeff;
+  --nb-green: #3ee077;
+  --nb-pink: #ff4fa3;
+  --nb-purple: #e45fc6;
+  --nb-yellow: #ffdd33;
+  --nb-indigo: #9c8af5;
+  --nb-olive: #a8c35f;
+  --nb-darkgreen: #43cf3a;
+  --nb-safe: #23361c;
+  --nb-caveat: #3b3119;
+  --nb-loss: #42201f;
+  --nb-na: #26272a;
+}
+.nb-img {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.dark .nb-img {
+  filter: brightness(0.9);
+}
+.nb-viewport:not([data-corrections="on"]) .nb-corr {
+  display: none;
+}
+
+/* Notes editor (dev only) */
+.nb-editing div[data-el-id],
+.nb-editing img[data-el-id] {
+  pointer-events: auto;
+}
+/* strokes are selected by their ink, not their bounding box; a transparent halo makes thin ones easier to hit */
+.nb-editing svg[data-el-id] path {
+  pointer-events: visiblePainted;
+}
+.nb-editing svg[data-el-id] path[fill]:not([stroke]) {
+  stroke: transparent;
+  stroke-width: 4px;
+}
+.nb-editing[data-tool="select"] { cursor: default; }
+.nb-editing[data-tool="text"] { cursor: text; }
+.nb-editing[data-tool="pen"],
+.nb-editing[data-tool="highlighter"],
+.nb-editing[data-tool="arrow"] { cursor: crosshair; }
+.nb-editing[data-tool="eraser"] { cursor: cell; }
+.nb-viewport[data-panning],
+.nb-viewport[data-panning] * { cursor: grab !important; }
+.nb-text-editing:empty::before {
+  content: "Type…";
+  opacity: 0.4;
+}
+
+/* C syntax colours for notes code panels (GitHub-like, tuned for each theme) */
+.nb-code { background: #fbfbfa; color: #1f2328; }
+.nb-tok-comment { color: #6e7781; font-style: italic; }
+.nb-tok-string { color: #0a3069; }
+.nb-tok-number { color: #116329; }
+.nb-tok-type { color: #8250df; }
+.nb-tok-keyword { color: #cf222e; }
+.nb-tok-macro { color: #953800; }
+.nb-tok-fn { color: #0550ae; }
+.nb-tok-punct { color: #57606a; }
+.dark .nb-code { background: #0d1117; color: #e6edf3; }
+.dark .nb-tok-comment { color: #8b949e; }
+.dark .nb-tok-string { color: #a5d6ff; }
+.dark .nb-tok-number { color: #7ee787; }
+.dark .nb-tok-type { color: #d2a8ff; }
+.dark .nb-tok-keyword { color: #ff7b72; }
+.dark .nb-tok-macro { color: #ffa657; }
+.dark .nb-tok-fn { color: #79c0ff; }
+.dark .nb-tok-punct { color: #9da7b3; }

@@ -7,3 +7,6 @@ out/
 
 # env
 .env*
+
+# python
+__pycache__/

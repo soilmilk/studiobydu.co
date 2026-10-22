@@ -81,12 +81,25 @@ export default function Nav() {
 
         <nav className="flex items-center gap-4 text-med text-neutral-700 dark:text-neutral-300">
           <Link
+            href="/notes"
+            className="hover:text-neutral-950 dark:hover:text-neutral-50"
+          >
+            <Image
+              src="/media/sticky-note.png"
+              alt="Notes"
+              width={20}
+              height={20}
+              className="opacity-60 hover:opacity-100 transition-opacity dark:opacity-100 dark:[filter:invert(1)]"
+            />
+          </Link>
+
+          <Link
             href="/blog"
             className="hover:text-neutral-950 dark:hover:text-neutral-50"
           >
             <Image
               src="/media/notebook-text.png"
-              alt="Notes"
+              alt="Blog"
               width={20}
               height={20}
               className="opacity-60 hover:opacity-100 transition-opacity dark:opacity-100 dark:[filter:invert(1)]"
