@@ -127,3 +127,17 @@ export function ArrowDefs({ id, color }: { id: string; color: string }) {
     </marker>
   );
 }
+
+/** A little floppy-disk "save file" icon, drawn in a 24×24 box at (x, y). */
+export function SaveIcon({ x = 0, y = 0, size = 24, color = "var(--nb-blue)" }: { x?: number; y?: number; size?: number; color?: string }) {
+  const s = size / 24;
+  return (
+    <g transform={`translate(${x},${y}) scale(${s})`}>
+      <path d="M3,2 H17 L22,7 V20 A2,2 0 0 1 20,22 H4 A2,2 0 0 1 2,20 V4 A2,2 0 0 1 3,2 Z" fill={color} />
+      <rect x={6} y={3} width={9} height={6} rx={1} fill="white" opacity={0.9} />
+      <rect x={12} y={4} width={2} height={4} fill={color} />
+      <rect x={5} y={13} width={14} height={7} rx={1} fill="white" opacity={0.9} />
+      <path d="M7,16 H17 M7,18 H14" stroke={color} strokeWidth={1} opacity={0.6} />
+    </g>
+  );
+}

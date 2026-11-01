@@ -282,3 +282,21 @@
 .dark .nb-tok-macro { color: #ffa657; }
 .dark .nb-tok-fn { color: #79c0ff; }
 .dark .nb-tok-punct { color: #9da7b3; }
+
+/* overlay widgets (e.g. the save-journey animation) never capture clicks, not even in the editor */
+.nb-editing div[data-nb-overlay] {
+  pointer-events: none !important;
+}
+
+@keyframes nb-fill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* a reference count that just changed */
+@keyframes nb-ref-flash {
+  0%, 60% { opacity: 1; }
+  30% { opacity: 0.25; }
+}
+.nb-ref-flash { animation: nb-ref-flash 0.9s ease-in-out 2; }
+@media (prefers-reduced-motion: reduce) { .nb-ref-flash { animation: none; } }

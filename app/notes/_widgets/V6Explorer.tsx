@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useReducedMotion } from "framer-motion";
 import { useNotes } from "../_components/Canvas";
 import type { WidgetProps } from ".";
 
@@ -9,12 +8,14 @@ import type { WidgetProps } from ".";
 // them. Click anything, or step through the lookup of /usr/note.txt. Numbers come from the course
 // slide (inodes 1/3/12/14/16, blocks 2/56/67/122/421/545); inode 16 → block 876 → "hello!" follows the
 // board's create-file steps (a small file, so 876 is a direct data block).
+// Second mode, remove(): two names (note.txt, copy.txt) share inode 16; removing both drops its link
+// count (i_nlink) to 0, releases the in-memory inode, frees block 876 in the bitmap and frees the inode.
 
 const W = 740;
 const H = 955;
 
 // ---------- the example filesystem ----------
-type Inode = { n: number; type: "dir" | "file"; mode: "small" | "large"; size: number; addr: number[]; path?: string };
+type Inode = { n: number; type: "dir" | "file"; mode: "small" | "large"; size: number; addr: number[]; nlink: number; path?: string };
 type Block =
   | { n: number; kind: "inodes" }
   | { n: number; kind: "dir"; owner: number; entries: [string, number][]; note?: string }
@@ -22,18 +23,19 @@ type Block =
   | { n: number; kind: "data"; owner: number; text: string };
 
 const INODES: Inode[] = [
-  { n: 1, type: "dir", mode: "small", size: 96, addr: [56], path: "/" },
-  { n: 3, type: "dir", mode: "large", size: 131584, addr: [122, 545], path: "/usr" },
-  { n: 12, type: "dir", mode: "small", size: 544, addr: [32, 41] },
-  { n: 14, type: "dir", mode: "small", size: 64, addr: [62], path: "/usr/files" },
-  { n: 16, type: "file", mode: "small", size: 6, addr: [876], path: "/usr/note.txt" },
+  // nlink = names pointing at the inode. A directory has 2 + one per subdirectory (its name, its own ".", each child's "..")
+  { n: 1, type: "dir", mode: "small", size: 96, addr: [56], nlink: 6, path: "/" },
+  { n: 3, type: "dir", mode: "large", size: 131584, addr: [122, 545], nlink: 4, path: "/usr" },
+  { n: 12, type: "dir", mode: "small", size: 544, addr: [32, 41], nlink: 2 },
+  { n: 14, type: "dir", mode: "small", size: 64, addr: [62], nlink: 2, path: "/usr/files" },
+  { n: 16, type: "file", mode: "small", size: 6, addr: [876], nlink: 2, path: "/usr/note.txt" },
 ];
 const BLOCKS: Block[] = [
   { n: 2, kind: "inodes" },
   { n: 56, kind: "dir", owner: 1, entries: [[".", 1], ["..", 1], ["bin", 13], ["tmp", 10], ["other", 9], ["usr", 3]] },
   { n: 67, kind: "dir", owner: 3, entries: [[".", 3], ["..", 1], ["apps", 21], ["files", 14]], note: "no “note.txt” here" },
   { n: 122, kind: "indirect", owner: 3, ptrs: [67, 421, 872, 999, 135, 346], more: true },
-  { n: 421, kind: "dir", owner: 3, entries: [["icon.png", 30], ["doc.pdf", 15], ["note.txt", 16]] },
+  { n: 421, kind: "dir", owner: 3, entries: [["icon.png", 30], ["doc.pdf", 15], ["note.txt", 16], ["copy.txt", 16]] },
   { n: 545, kind: "indirect", owner: 3, ptrs: [565], more: false },
   { n: 876, kind: "data", owner: 16, text: "hello!" },
 ];
@@ -130,6 +132,93 @@ const HOPS: Hop[] = [
   },
 ];
 
+// ---------- remove(): what changes on disk and in memory ----------
+type Fs = { nlink: number; gone: string[]; mem: number | null; blockFree: boolean; inodeFree: boolean };
+const FS0: Fs = { nlink: 2, gone: [], mem: null, blockFree: false, inodeFree: false };
+type RmStep = Hop & { s: Fs; anim?: "mem" | "block" | "inode" };
+
+const RM: RmStep[] = [
+  {
+    chip: "2 names",
+    title: "Two names, one inode",
+    body: "Block 421 (one of /usr's directory blocks) has two entries for inode 16: note.txt and copy.txt, a hard link made with link(). So inode 16's ref count (i_nlink) is 2. remove() deletes a name; the file itself goes only when no name is left.",
+    inodes: [16],
+    blocks: [421],
+    arrows: [{ from: "b421", to: "i16" }],
+    s: FS0,
+  },
+  {
+    chip: "find note.txt",
+    title: "remove(\"/usr/note.txt\"): find the entry",
+    body: "Resolve the parent /usr (inode 3 → block 122 → block 421, as in the lookup) and search its directory blocks for the name. The entry note.txt says inode 16, so the kernel loads inode 16 into memory (in-memory refcount 1) to change it.",
+    inodes: [3, 16],
+    blocks: [421],
+    entry: [421, "note.txt"],
+    arrows: [{ from: "b421", to: "i16" }],
+    s: { ...FS0, mem: 1 },
+  },
+  {
+    chip: "nlink 2 → 1",
+    title: "Decrement the inode's ref count",
+    body: "i_nlink 2 → 1, written back to inode 16 in the inode table (block 2).",
+    inodes: [16],
+    blocks: [2],
+    region: "inodes",
+    s: { ...FS0, nlink: 1, mem: 1 },
+  },
+  {
+    chip: "clear entry",
+    title: "Remove the directory entry",
+    body: "The entry's inumber is set to 0, which marks its 16 B slot empty (the next create can reuse it). nlink is 1, not 0: copy.txt still names inode 16, so nothing is freed. remove returns, and the in-memory copy is dropped; the inode stays on disk.",
+    inodes: [16],
+    blocks: [421],
+    entry: [421, "note.txt"],
+    arrows: [{ from: "b421", to: "i16" }],
+    s: { ...FS0, nlink: 1, gone: ["note.txt"] },
+  },
+  {
+    chip: "remove copy.txt",
+    title: "remove(\"/usr/copy.txt\"): the last name",
+    body: "Same lookup: entry copy.txt → inode 16, loaded into memory again. i_nlink 1 → 0 and the entry is cleared. No directory names inode 16 any more.",
+    inodes: [16],
+    blocks: [421],
+    entry: [421, "copy.txt"],
+    s: { ...FS0, nlink: 0, gone: ["note.txt", "copy.txt"], mem: 1 },
+  },
+  {
+    chip: "free in memory",
+    title: "Release the in-memory inode",
+    body: "remove drops its in-memory reference: refcount 1 → 0, and the in-memory inode is freed. With nlink 0 and refcount 0 nothing can reach the file, so the kernel now frees its resources. (If a process still had it open, the refcount would stay above 0 and the freeing would wait for its last close().)",
+    inodes: [16],
+    s: { ...FS0, nlink: 0, gone: ["note.txt", "copy.txt"] }, // the badge counts 1 → 0 and fades (see memShown)
+    anim: "mem",
+  },
+  {
+    chip: "free block 876",
+    title: "Deallocate the payload blocks",
+    body: "Walk i_addr and free every block the file used (for a large file, its indirect blocks too). Block 876's bit in the bitmap flips 1 → 0. The bytes “hello!” are not erased: the block is just available for reuse.",
+    inodes: [16],
+    blocks: [876],
+    region: "bitmap",
+    arrows: [{ from: "i16", to: "b876" }],
+    s: { ...FS0, nlink: 0, gone: ["note.txt", "copy.txt"], blockFree: true },
+    anim: "block",
+  },
+  {
+    chip: "inode free",
+    title: "Mark the inode free",
+    body: "Clear inode 16's mode (the allocated flag), size and i_addr, and write it back to block 2. The next create can hand out inode 16. The name, the blocks and the inode are now all free: remove is complete.",
+    inodes: [16],
+    blocks: [2],
+    region: "inodes",
+    s: { ...FS0, nlink: 0, gone: ["note.txt", "copy.txt"], blockFree: true, inodeFree: true },
+    anim: "inode",
+  },
+];
+
+// bitmap bits shown for blocks 872–879 (1 = used)
+const BITS: [number, number][] = [[872, 1], [873, 1], [874, 0], [875, 1], [876, 1], [877, 0], [878, 1], [879, 0]];
+
 const REGION_INFO: Record<Region, { title: string; body: string }> = {
   boot: { title: "Block 0: boot block", body: "Code to boot the machine. Not part of the filesystem proper. Every block on the disk is 512 B (one sector)." },
   super: {
@@ -157,7 +246,9 @@ const REGIONS: { r: Region; label: string; x: number; w: number; fill: string }[
   { r: "data", label: "Data blocks", x: 490, w: 250, fill: "green" },
 ];
 const HOPBAR = { y: 186, h: 64 };
-const IN = { y: 286, h: 122, w: 140, gap: 10 };
+const IN = { y: 286, h: 136, w: 140, gap: 10 };
+const STRIP = { y: 140, h: 40, x: 404, bw: 40, gap: 2 };
+const bitX = (n: number) => STRIP.x + (n - 872) * (STRIP.bw + STRIP.gap) + STRIP.bw / 2;
 const BL = { y: 500, h: 176, w: (W - 6 * 8) / 7, gap: 8 };
 const PANEL = { y: 718, h: H - 718 };
 
@@ -189,6 +280,8 @@ function arrowPath(a: Arrow) {
 
 const tint = (c: string, pct: number) => `color-mix(in srgb, var(--nb-${c}) ${pct}%, transparent)`;
 
+type Mode = "lookup" | "remove";
+
 // ---------- derive what is lit ----------
 type View = {
   title: string;
@@ -201,7 +294,7 @@ type View = {
   facts?: string[];
 };
 
-function viewFor(sel: Sel | null, hop: number | null): View | null {
+function viewFor(sel: Sel | null, hop: number | null, mode: Mode): View | null {
   if (sel?.kind === "inode") {
     const i = inodeBy.get(sel.n)!;
     const shown = i.addr.filter((b) => blockBy.has(b));
@@ -218,7 +311,7 @@ function viewFor(sel: Sel | null, hop: number | null): View | null {
       blocks: new Set(shown),
       region: "inodes",
       arrows: shown.map((b) => ({ from: `i${i.n}`, to: `b${b}` })),
-      facts: [`stored in block 2, bytes ${off}–${off + 31}`, "32 B per inode"],
+      facts: [`stored in block 2, bytes ${off}–${off + 31}`, "32 B per inode", `nlink ${i.nlink}: names pointing here`],
     };
   }
   if (sel?.kind === "block") {
@@ -236,7 +329,7 @@ function viewFor(sel: Sel | null, hop: number | null): View | null {
     const owner = inodeBy.get(b.owner);
     const ownerArrow = { from: `i${b.owner}`, to: `b${b.n}` };
     if (b.kind === "dir") {
-      const targets = b.entries.map(([, n]) => n).filter((n) => inodeBy.has(n) && n !== b.owner);
+      const targets = [...new Set(b.entries.map(([, n]) => n))].filter((n) => inodeBy.has(n) && n !== b.owner);
       return {
         title: `Block ${b.n} · directory ${owner?.path ?? ""}`,
         body: `Directory entries of ${owner?.path ?? `inode ${b.owner}`}. Each entry is 16 B: a 2 B inumber and a 14 B name. Click an entry to open its inode.${b.note ? ` (${b.note}.)` : ""}`,
@@ -280,9 +373,10 @@ function viewFor(sel: Sel | null, hop: number | null): View | null {
     };
   }
   if (hop != null) {
-    const h = HOPS[hop];
+    const steps = mode === "remove" ? RM : HOPS;
+    const h = steps[hop];
     return {
-      title: `${hop + 1}/${HOPS.length} · ${h.title}`,
+      title: `${hop + 1}/${steps.length} · ${h.title}`,
       body: h.body,
       inodes: new Set(h.inodes ?? []),
       blocks: new Set(h.blocks ?? []),
@@ -296,16 +390,85 @@ function viewFor(sel: Sel | null, hop: number | null): View | null {
 
 // ---------- component ----------
 function Explorer({ full }: { full?: boolean }) {
-  const reduced = !!useReducedMotion();
   const [sel, setSel] = useState<Sel | null>(null);
   const [hop, setHop] = useState<number | null>(null);
-  const v = viewFor(sel, hop);
+  const [mode, setMode] = useState<Mode>("lookup");
+  const [landed, setLanded] = useState(true); // the remove step's animation has finished
+  const [token, setToken] = useState<{ x: number; y: number; label: string } | null>(null);
+  const [route, setRoute] = useState<string | null>(null);
+  const pathRef = useRef<SVGPathElement>(null);
+  const raf = useRef(0);
+  const timers = useRef<number[]>([]);
+  const v = viewFor(sel, hop, mode);
   const anyLit = !!v;
-  const trans = reduced ? "" : "transition-[opacity,background-color,box-shadow] duration-300";
+  // CSS decides reduced motion, so server and client render identical markup (no hydration mismatch)
+  const trans = "transition-[opacity,background-color,box-shadow] duration-300 motion-reduce:transition-none";
+  const steps = mode === "remove" ? RM : HOPS;
 
-  const go = (n: number) => {
+  // filesystem state for remove(): before an animated step lands, show the previous step's state
+  const rmAt = mode === "remove" && hop != null ? hop : null;
+  const fs: Fs = rmAt == null ? FS0 : !landed && rmAt > 0 ? RM[rmAt - 1].s : RM[rmAt].s;
+  const memShown = rmAt != null && rmAt === 5 ? (landed ? null : 1) : fs.mem;
+
+  const stop = () => {
+    cancelAnimationFrame(raf.current);
+    timers.current.forEach(clearTimeout);
+    timers.current = [];
+    setToken(null);
+    setRoute(null);
+  };
+  useEffect(() => stop, []);
+
+  const travel = (d: string, label: string, ms: number) =>
+    new Promise<void>((resolve) => {
+      setRoute(d);
+      requestAnimationFrame(() => {
+        const p = pathRef.current;
+        if (!p) return resolve();
+        const len = p.getTotalLength();
+        const t0 = performance.now();
+        const tick = (now: number) => {
+          const t = Math.min(1, (now - t0) / ms);
+          const e = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+          const pt = p.getPointAtLength(len * e);
+          setToken({ x: pt.x, y: pt.y, label });
+          if (t < 1) raf.current = requestAnimationFrame(tick);
+          else resolve();
+        };
+        raf.current = requestAnimationFrame(tick);
+      });
+    });
+  const wait = (ms: number) => new Promise((r) => timers.current.push(window.setTimeout(r, ms)));
+
+  const go = async (n: number, m: Mode = mode) => {
+    stop();
     setSel(null);
-    setHop(Math.max(0, Math.min(HOPS.length - 1, n)));
+    const list = m === "remove" ? RM : HOPS;
+    const k = Math.max(0, Math.min(list.length - 1, n));
+    setHop(k);
+    const anim = m === "remove" ? RM[k].anim : undefined;
+    if (!anim || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return setLanded(true);
+    setLanded(false);
+    if (anim === "mem") {
+      await wait(1400); // the badge counts down, then fades
+    } else if (anim === "block") {
+      await wait(500);
+      const x0 = bx(876);
+      const x1 = bitX(876);
+      await travel(`M${x0},${BL.y + 20} C${x0},${BL.y - 160} ${x1},${STRIP.y + 200} ${x1},${STRIP.y + STRIP.h / 2}`, "876", 1800);
+    } else {
+      await wait(700);
+    }
+    setLanded(true);
+    setRoute(null);
+    timers.current.push(window.setTimeout(() => setToken(null), 400));
+  };
+  const switchMode = (m: Mode) => {
+    stop();
+    setMode(m);
+    setSel(null);
+    setHop(null);
+    setLanded(true);
   };
   const pick = (s: Sel) => setSel((cur) => (cur && JSON.stringify(cur) === JSON.stringify(s) ? null : s));
 
@@ -317,6 +480,7 @@ function Explorer({ full }: { full?: boolean }) {
       e.preventDefault();
       go(hop == null ? 0 : hop - 1);
     } else if (e.key === "Escape") {
+      stop();
       setSel(null);
       setHop(null);
     }
@@ -363,7 +527,38 @@ function Explorer({ full }: { full?: boolean }) {
           </button>
         );
       })}
-      <div className="absolute text-[12px] leading-tight opacity-75 [&>span]:px-1" style={{ top: BAR.y + BAR.h + 6, left: 0, width: W }}>
+      {mode === "remove" && (
+        <div className="absolute" style={{ top: STRIP.y, left: 0, width: W, height: STRIP.h }}>
+          <div className="absolute text-right text-[12px] leading-tight" style={{ left: 164, width: STRIP.x - 164 - 10, top: 4 }}>
+            <b>bitmap</b>, blocks 872–879
+            <div className="opacity-60">1 = used · 0 = free</div>
+          </div>
+          {BITS.map(([n, b]) => {
+            const bit = n === 876 && fs.blockFree ? 0 : b;
+            const hot = n === 876 && rmAt != null && rmAt >= 6;
+            return (
+              <div
+                key={n}
+                className={`absolute flex flex-col items-center justify-center rounded-md border-2 ${trans}`}
+                style={{
+                  left: bitX(n) - STRIP.bw / 2,
+                  top: 0,
+                  width: STRIP.bw,
+                  height: STRIP.h,
+                  borderColor: hot ? "var(--nb-red)" : tint("olive", 60),
+                  background: tint("olive", bit ? 32 : 6),
+                }}
+              >
+                <span className="text-[9.5px] leading-none opacity-70">{n}</span>
+                <span key={`${n}-${bit}`} className={`text-[16px] font-bold leading-tight ${hot && fs.blockFree ? "nb-ref-flash text-[var(--nb-red)]" : ""}`} style={{ fontFamily: "var(--nb-mono)" }}>
+                  {bit}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      )}
+      <div className={`absolute text-[12px] leading-tight opacity-75 [&>span]:px-1 ${mode === "remove" ? "hidden" : ""}`} style={{ top: BAR.y + BAR.h + 6, left: 0, width: W }}>
         <span className="absolute" style={{ left: 0, width: 72 }}>
           <b style={{ color: "var(--nb-red)" }}>512 B</b> each
         </span>
@@ -387,22 +582,43 @@ function Explorer({ full }: { full?: boolean }) {
         style={{ top: HOPBAR.y, left: 0, width: W, height: HOPBAR.h }}
       >
         <div className="flex items-center gap-2 text-[13px]">
-          <span className="font-semibold">
-            Look up <code style={{ fontFamily: "var(--nb-mono)" }}>/usr/note.txt</code>
+          {(["lookup", "remove"] as Mode[]).map((m) => (
+            <button
+              key={m}
+              type="button"
+              role="tab"
+              aria-selected={mode === m}
+              onClick={() => switchMode(m)}
+              className={`rounded-full border px-2.5 py-0.5 font-semibold ${trans} ${
+                mode === m ? "border-[var(--nb-purple)] bg-[var(--nb-purple)] text-white" : "border-[color-mix(in_srgb,var(--nb-ink)_25%,transparent)] opacity-80"
+              }`}
+            >
+              {m === "lookup" ? (
+                <>
+                  Look up <code style={{ fontFamily: "var(--nb-mono)" }}>/usr/note.txt</code>
+                </>
+              ) : (
+                <code style={{ fontFamily: "var(--nb-mono)" }}>remove()</code>
+              )}
+            </button>
+          ))}
+          <span className="opacity-60">
+            {hop == null ? `${steps.length} ${mode === "lookup" ? "hops" : "steps"}` : `${mode === "lookup" ? "hop" : "step"} ${hop + 1} of ${steps.length}`}
           </span>
-          <span className="opacity-60">{hop == null ? "9 hops" : `hop ${hop + 1} of ${HOPS.length}`}</span>
           <div className="ml-auto flex gap-1.5">
             <SmallBtn onClick={() => go(hop == null ? 0 : hop - 1)} disabled={hop === 0 || hop == null}>
               ← Back
             </SmallBtn>
-            <SmallBtn primary onClick={() => go(hop == null ? 0 : hop + 1)} disabled={hop === HOPS.length - 1}>
+            <SmallBtn primary onClick={() => go(hop == null ? 0 : hop + 1)} disabled={hop === steps.length - 1}>
               {hop == null ? "Start →" : "Next →"}
             </SmallBtn>
             {(hop != null || sel) && (
               <SmallBtn
                 onClick={() => {
+                  stop();
                   setHop(null);
                   setSel(null);
+                  setLanded(true);
                 }}
               >
                 Reset
@@ -411,7 +627,7 @@ function Explorer({ full }: { full?: boolean }) {
           </div>
         </div>
         <div className="flex gap-1">
-          {HOPS.map((h, i) => (
+          {steps.map((h, i) => (
             <button
               key={i}
               type="button"
@@ -439,6 +655,11 @@ function Explorer({ full }: { full?: boolean }) {
       {INODES.map((i, k) => {
         const lit = litI(i.n);
         const focus = anyLit && v!.inodes.has(i.n);
+        const is16 = i.n === 16;
+        const nlink = is16 ? fs.nlink : i.nlink;
+        const free = is16 && fs.inodeFree;
+        const path = is16 ? (fs.gone.length === 0 ? i.path : fs.gone.length === 1 ? "/usr/copy.txt" : undefined) : i.path;
+        const prevNlink = is16 && rmAt != null && rmAt > 0 ? RM[rmAt - 1].s.nlink : nlink;
         return (
           <div
             key={i.n}
@@ -452,26 +673,40 @@ function Explorer({ full }: { full?: boolean }) {
               top: IN.y,
               width: IN.w,
               height: IN.h,
-              background: tint("indigo", focus ? 34 : 18),
+              background: free ? tint("ink", 4) : tint("indigo", focus ? 34 : 18),
               borderColor: focus ? "var(--nb-purple)" : tint("indigo", 55),
+              borderStyle: free ? "dashed" : undefined,
               opacity: lit ? 1 : 0.35,
             }}
           >
             <div className="flex items-baseline justify-between gap-1">
               <span className="shrink-0 whitespace-nowrap text-[14px] font-bold">Inode {i.n}</span>
-              {i.path && (
-                <span className="min-w-0 truncate text-[11px] opacity-70" style={{ fontFamily: "var(--nb-mono)" }} title={i.path}>
-                  {i.path}
+              {path && (
+                <span className="min-w-0 truncate text-[11px] opacity-70" style={{ fontFamily: "var(--nb-mono)" }} title={path}>
+                  {path}
                 </span>
               )}
+              {free && <span className="text-[11px] font-semibold text-[var(--nb-green)]">free</span>}
             </div>
             <div className="mt-1 space-y-0.5 text-[12px] leading-snug" style={{ fontFamily: "var(--nb-mono)" }}>
-              <div>type: {i.type}</div>
-              <div>mode: {i.mode}</div>
-              <div>size: {i.size}</div>
+              <div>type: {free ? "—" : i.type}</div>
+              <div>mode: {free ? "0 (free)" : i.mode}</div>
+              <div>size: {free ? 0 : i.size}</div>
+              <div>
+                nlink:{" "}
+                <b
+                  key={`${i.n}-${nlink}`}
+                  className={nlink !== prevNlink ? "nb-ref-flash" : undefined}
+                  style={{ color: is16 && rmAt != null ? (nlink === 0 ? "var(--nb-red)" : "var(--nb-purple)") : undefined }}
+                >
+                  {nlink}
+                </b>
+                <span className="opacity-60"> (refs)</span>
+              </div>
               <div className="flex flex-wrap gap-x-1">
                 i_addr:
-                {i.addr.map((b) =>
+                {free && <span className="opacity-60">—</span>}
+                {!free && i.addr.map((b) =>
                   blockBy.has(b) ? (
                     <button
                       key={b}
@@ -496,6 +731,30 @@ function Explorer({ full }: { full?: boolean }) {
         );
       })}
 
+      {/* remove(): the in-memory copy of inode 16 (loaded by the lookup, freed when its refcount hits 0) */}
+      {mode === "remove" && (
+        <div
+          className={`absolute rounded-md border-2 border-[var(--nb-blue)] px-2 py-1 text-[11px] leading-tight ${trans} ${rmAt === 5 && landed ? "duration-[900ms]" : ""}`}
+          style={{
+            left: ix(16) - IN.w / 2,
+            top: IN.y + IN.h + 8,
+            width: IN.w,
+            background: tint("blue", 14),
+            opacity: memShown != null || (rmAt === 5 && !landed) ? 1 : 0,
+            transform: rmAt === 5 && landed ? "translateY(-6px)" : undefined,
+          }}
+          aria-hidden={memShown == null}
+        >
+          <b>in memory</b> (kernel)
+          <div style={{ fontFamily: "var(--nb-mono)" }}>
+            inode 16 · refcount{" "}
+            <b key={String(landed)} className={rmAt === 5 ? "nb-ref-flash text-[var(--nb-red)]" : undefined}>
+              {rmAt === 5 ? 0 : (memShown ?? 1)}
+            </b>
+          </div>
+        </div>
+      )}
+
       {/* data blocks */}
       <SectionLabel y={BL.y - 22}>
         Blocks <span className="opacity-60">· 512 B each</span>
@@ -517,7 +776,8 @@ function Explorer({ full }: { full?: boolean }) {
               top: BL.y,
               width: BL.w,
               height: BL.h,
-              background: isInodes ? tint("indigo", focus ? 30 : 14) : tint("green", focus ? 34 : 18),
+              background: isInodes ? tint("indigo", focus ? 30 : 14) : b.n === 876 && fs.blockFree ? tint("ink", 4) : tint("green", focus ? 34 : 18),
+              borderStyle: b.n === 876 && fs.blockFree ? "dashed" : undefined,
               borderColor: focus ? "var(--nb-purple)" : isInodes ? tint("indigo", 50) : tint("green", 70),
               opacity: lit ? 1 : 0.35,
             }}
@@ -535,8 +795,9 @@ function Explorer({ full }: { full?: boolean }) {
               )}
               {b.kind === "dir" &&
                 b.entries.map(([name, n]) => {
+                  const gone = b.n === 421 && fs.gone.includes(name);
                   const hot = v?.entry && v.entry[0] === b.n && v.entry[1] === name;
-                  const known = inodeBy.has(n) && name !== "." && name !== "..";
+                  const known = !gone && inodeBy.has(n) && name !== "." && name !== "..";
                   return (
                     <div
                       key={name}
@@ -549,8 +810,8 @@ function Explorer({ full }: { full?: boolean }) {
                         pick({ kind: "inode", n });
                       }}
                     >
-                      <span>{name}</span>
-                      <span>{n}</span>
+                      <span className={gone ? "line-through opacity-60" : ""}>{name}</span>
+                      <span className={gone ? "font-bold" : ""}>{gone ? 0 : n}</span>
                     </div>
                   );
                 })}
@@ -580,8 +841,11 @@ function Explorer({ full }: { full?: boolean }) {
                 </div>
               )}
               {b.kind === "data" && (
-                <div className="mt-2 inline-block rounded bg-[var(--nb-darkgreen)] px-1.5 py-0.5 text-[18px] font-bold text-white">{b.text}</div>
+                <div className={`mt-2 inline-block rounded bg-[var(--nb-darkgreen)] px-1.5 py-0.5 text-[18px] font-bold text-white ${trans}`} style={{ opacity: fs.blockFree ? 0.35 : 1 }}>
+                  {b.text}
+                </div>
               )}
+              {b.kind === "data" && fs.blockFree && <div className="mt-1 text-[10.5px] font-semibold text-[var(--nb-green)]">free · bytes left as-is</div>}
             </div>
           </div>
         );
@@ -596,6 +860,7 @@ function Explorer({ full }: { full?: boolean }) {
             </marker>
           ))}
         </defs>
+        {route && <path ref={pathRef} d={route} fill="none" stroke="var(--nb-red)" strokeWidth={2.5} strokeOpacity={0.6} strokeDasharray="7 5" strokeLinecap="round" />}
         {(v?.arrows ?? []).map((a) => {
           const c = a.from[0] === "b" && a.to[0] === "i" ? "pink" : "purple";
           return (
@@ -611,6 +876,14 @@ function Explorer({ full }: { full?: boolean }) {
           );
         })}
       </svg>
+      {token && (
+        <div
+          className="pointer-events-none absolute rounded-full bg-[var(--nb-red)] px-2 py-0.5 text-[12px] font-bold text-white"
+          style={{ left: token.x, top: token.y, transform: "translate(-50%, -50%)", fontFamily: "var(--nb-mono)" }}
+        >
+          block {token.label}
+        </div>
+      )}
 
       {/* explanation */}
       <div

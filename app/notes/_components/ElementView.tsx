@@ -138,7 +138,14 @@ export default function ElementView({ el }: { el: BoardElement }) {
       const W = widgets[el.props.widget];
       return (
         // data-nb-widget: clicks inside work in view mode; in the editor the element is selected instead
-        <div data-el-id={el.id} data-nb-widget role="group" aria-label={el.props.label} style={box(el)}>
+        <div
+          data-el-id={el.id}
+          data-nb-widget
+          data-nb-overlay={el.props.overlay || undefined}
+          role="group"
+          aria-label={el.props.label}
+          style={{ ...box(el), pointerEvents: el.props.overlay ? "none" : undefined }}
+        >
           <W w={el.w} h={el.h} />
         </div>
       );

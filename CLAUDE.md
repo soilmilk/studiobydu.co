@@ -99,6 +99,10 @@ Elements paint in array order. In TypeScript terms:
   Clicks inside a widget work in view mode (`data-nb-widget` stops panning). In the editor the whole
   widget is selected and moved instead. To offer a full-screen view, also register a component in
   `_steppers/index.ts` and open it with `useNotes().openStepper(...)`.
+- **Overlay widgets** (`props.overlay: true`, e.g. `SaveJourney`, the "Watch a game save" animation)
+  are drawn over other elements without blocking clicks: only their own controls (`pointer-events-auto`
+  plus `data-nb-interactive`) take input, and the editor never selects them. Their paths are in board
+  coordinates (the element's box is the SVG viewBox). They steer the camera with `useNotes().frame(rect)`.
 - **New correction:** add to `corrections.ts` with `target` set to an element id. The board page throws
   at build time if the target doesn't exist.
 

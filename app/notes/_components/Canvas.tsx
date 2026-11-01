@@ -27,6 +27,8 @@ type NotesCtx = {
   /** Board coordinates of the viewport centre, and the visible width in board units. */
   viewport: () => { center: Pt; width: number };
   zoom: () => number;
+  /** Animate the camera so `rect` (board coords) fills the viewport, with some padding. */
+  frame: (rect: Rect, opts?: { pad?: number; maxK?: number }) => void;
   setTool: (h: ToolHandler | null) => void;
   overlay: HTMLDivElement | null;
 };
@@ -342,6 +344,13 @@ export default function Canvas({
       return { center: toBoard(r.left + r.width / 2, r.top + r.height / 2), width: r.width / t.current.k };
     },
     zoom: () => t.current.k,
+    frame: (rect, opts) => {
+      touched.current = true;
+      const r = vpRef.current!.getBoundingClientRect();
+      const pad = opts?.pad ?? 0.15;
+      const k = Math.min(opts?.maxK ?? 3, MAX_K, r.width / (rect.w * (1 + 2 * pad)), (r.height - 70) / (rect.h * (1 + 2 * pad)));
+      animateTo({ k, x: r.width / 2 - (rect.x + rect.w / 2) * k, y: (r.height - 70) / 2 - (rect.y + rect.h / 2) * k });
+    },
     setTool: (h) => {
       tool.current = h;
     },

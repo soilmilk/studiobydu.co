@@ -59,14 +59,15 @@ export type InkEl = Base & { type: "ink"; props: { paths: InkPath[]; vb: ViewBox
 export type WidgetEl = Base & {
   type: "widget";
   /** devOnly: shown under `npm run dev` only (e.g. study material from assignments). */
-  props: { widget: WidgetId; label: string; devOnly?: boolean };
+  /** overlay: drawn over other elements without blocking clicks (only its own controls are clickable). */
+  props: { widget: WidgetId; label: string; devOnly?: boolean; overlay?: boolean };
 };
 
 export type BoardElement = TextEl | ImageEl | SvgEl | StepperEl | ArrowEl | InkEl | WidgetEl;
 
-export type DiagramId = "fork-timeline" | "pipe-examples";
-export type StepperId = "fork" | "shell" | "pipe-dup2" | "create-file" | "v6-fs" | "v6-code";
-export type WidgetId = "v6-fs" | "v6-code";
+export type DiagramId = "fork-timeline";
+export type StepperId = "fork" | "shell" | "create-file" | "v6-fs" | "v6-code";
+export type WidgetId = "v6-fs" | "v6-code" | "save-journey" | "fd-tables";
 
 export type Board = {
   slug: string;

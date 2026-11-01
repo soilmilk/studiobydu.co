@@ -10,3 +10,8 @@ out/
 
 # python
 __pycache__/
+
+# study-only material: assignment code and the source board PDF stay local
+app/notes/_study/
+notes-source/cs111-board.pdf
+tsconfig.tsbuildinfo

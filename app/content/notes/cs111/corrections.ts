@@ -4,33 +4,6 @@ import type { Correction } from "../types";
 // these only show when the Corrections layer is on. Verified 2026-10-19 against the sources listed.
 export const corrections: Correction[] = [
   {
-    id: "fd-table-shared",
-    target: "a-ref5",
-    severity: "wrong",
-    original: "parent → [ref=2 | ref=2 | …] ← child (one table, shared)",
-    fix: "fork() gives the child its own copy of the fd table. Each copied fd points at the same open file table entry as the parent's, and that entry's refcount becomes 2.",
-    reason: "The refcount lives on the shared open file entries, not on a shared descriptor table.",
-    sources: ["https://man7.org/linux/man-pages/man2/fork.2.html"],
-  },
-  {
-    id: "pipe-return",
-    target: "b-returns",
-    severity: "imprecise",
-    original: "pipe() → returns two file descriptors fds[0], fds",
-    fix: "int pipe(int fds[2]) fills the array (fds[0] = read end, fds[1] = write end) and returns 0, or -1 on error.",
-    reason: "The two descriptors come back through the array argument; the return value is only success or failure.",
-    sources: ["https://man7.org/linux/man-pages/man2/pipe.2.html"],
-  },
-  {
-    id: "dup2-semantics",
-    target: "d-copies",
-    severity: "imprecise",
-    original: "dup2() → copies over fd from 1 file to another",
-    fix: "dup2(oldfd, newfd) makes newfd refer to the same open file as oldfd, closing newfd first if it was open. Returns newfd, or -1.",
-    reason: "It duplicates a descriptor onto another slot; no file contents are copied.",
-    sources: ["https://man7.org/linux/man-pages/man2/dup.2.html"],
-  },
-  {
     id: "kill-signature",
     target: "e-kill",
     severity: "wrong",

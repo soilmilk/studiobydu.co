@@ -21,7 +21,8 @@
     "paths": {
       "@/*": ["./*"],
       "@/components/*": ["app/components/*"],
-      "@/lib/*": ["lib/*"]
+      "@/lib/*": ["lib/*"],
+      "@study/*": ["app/notes/_study/*", "app/notes/_study-stub/*"]
     },
     "esModuleInterop": true
   },
